@@ -1,0 +1,1753 @@
+<!doctype html>
+<html lang="en"><head><script>window["__codeletBootstrap__"]=JSON.parse('{"A":"A","B":"20260717-05-8209e4e"}');</script><script src="/_sdk/f432b76fb310b513.telemetry_sdk.js" integrity="sha512-9FJQ55EKmmqhyyik8BhrMVfm0+iYYfb8uOlRsjtkxJMEI97qOVEI4PnHohDjQAtvAep0IOEpdQ64eki0sz62ug=="></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wise Family Living Road Trip Explorer</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --forest-green: #1b4332;
+      --evergreen: #2d6a4f;
+      --sandstone: #e8ded0;
+      --mountain-gray: #6b7280;
+      --warm-white: #faf7f2;
+      --soft-gold: #c9a15c;
+      --lake-blue: #4a7c96;
+    }
+    body { font-family: 'DM Sans', sans-serif; position: relative; -webkit-tap-highlight-color: transparent; }
+    html { scroll-behavior: smooth; }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 900px 500px at 10% -5%, rgba(201, 161, 92, 0.10), transparent 60%),
+        radial-gradient(ellipse 800px 600px at 100% 15%, rgba(45, 106, 79, 0.07), transparent 55%);
+    }
+    .tab-btn.active { background: #2d6a4f; color: white; }
+    .tab-btn { transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease; }
+    .tab-btn:active { transform: scale(0.95); }
+    .section { display: none; }
+    .section.active { display: block; animation: premiumFadeIn 0.35s ease; }
+    @keyframes premiumFadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+    .rounded-2xl.border, .rounded-2xl.shadow-sm, .rounded-xl.border, .toolbox-card {
+      transition: box-shadow 0.25s ease, transform 0.2s ease, border-color 0.25s ease;
+    }
+    .rounded-2xl.border:hover, .rounded-2xl.shadow-sm:hover, .toolbox-card:hover {
+      box-shadow: 0 10px 28px -14px rgba(27, 67, 50, 0.28);
+    }
+    button, a.quick-find-btn, .canva-button {
+      transition: transform 0.15s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+    }
+    button:active, a.quick-find-btn:active { transform: scale(0.97); }
+    main h2 { letter-spacing: -0.015em; }
+    main h3, main h4 { letter-spacing: -0.005em; }
+    main p { line-height: 1.6; }
+    .stop-detail { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    .stop-detail.open { max-height: 4000px; }
+    .stop-card .chevron { transition: transform 0.3s; }
+    .stop-card.expanded .chevron { transform: rotate(180deg); }
+    .journal-photo-slot { border: 2px dashed #a7c4b5; border-radius: 1rem; padding: 1.5rem; text-align: center; cursor: pointer; transition: all 0.2s; position: relative; }
+    .journal-photo-slot:hover { background: #f0fdf4; border-color: #2d6a4f; }
+    .journal-photo-slot.has-photos { border-style: solid; border-color: #2d6a4f; padding: 0 0 0.5rem 0; overflow: hidden; }
+    .journal-photo-slot.has-photos:hover { background: transparent; }
+    .journal-photo-cover-img { width: 100%; height: 96px; object-fit: cover; display: block; }
+    .journal-photo-slot.has-photos .journal-photo-label { display: block; margin-top: 0.5rem; }
+    .journal-photo-badge { position: absolute; top: 6px; right: 6px; background: rgba(0,0,0,0.65); color: #fff; font-size: 0.65rem; font-weight: 600; padding: 2px 7px; border-radius: 9999px; }
+    .journal-gallery-thumb { position: relative; border-radius: 0.5rem; overflow: hidden; aspect-ratio: 1 / 1; background: #f3f4f6; cursor: pointer; }
+    .journal-gallery-thumb.is-cover { outline: 3px solid #2d6a4f; }
+    .journal-gallery-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .journal-gallery-thumb .journal-gallery-remove { position: absolute; top: 2px; right: 2px; background: rgba(0,0,0,0.65); color: #fff; width: 20px; height: 20px; border-radius: 9999px; font-size: 0.75rem; line-height: 20px; text-align: center; }
+    .journal-gallery-thumb .journal-gallery-move { position: absolute; bottom: 2px; background: rgba(0,0,0,0.55); color: #fff; width: 20px; height: 20px; border-radius: 9999px; font-size: 0.7rem; line-height: 20px; text-align: center; }
+    .journal-gallery-thumb .journal-gallery-move-left { left: 2px; }
+    .journal-gallery-thumb .journal-gallery-move-right { right: 2px; }
+    .journal-gallery-thumb .journal-gallery-cover-label { position: absolute; top: 2px; left: 2px; background: #2d6a4f; color: #fff; font-size: 0.6rem; font-weight: 700; padding: 1px 6px; border-radius: 9999px; }
+    .toolbox-card { border-radius: 1rem; overflow: hidden; border: 1px solid #e5e7eb; }
+    .toolbox-card-header { cursor: pointer; padding: 1.25rem; display: flex; align-items: center; justify-content: space-between; transition: background-color 0.2s ease; }
+    .toolbox-card-header:hover { background: rgba(45, 106, 79, 0.04); }
+    .toolbox-card-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    .toolbox-card.open .toolbox-card-body { max-height: 8000px; }
+    .toolbox-card.open .toolbox-chevron { transform: rotate(180deg); }
+    .toolbox-chevron { transition: transform 0.3s; }
+    .quick-find-btn { min-height: 56px; border-radius: 1rem; font-weight: 600; font-size: 0.875rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; border: 2px solid #d1fae5; background: #ffffff; color: #1b4332; transition: all 0.15s; }
+    .quick-find-btn:hover { background: #ecfdf5; border-color: #2d6a4f; }
+    .checklist-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.625rem 0; border-bottom: 1px solid #f3f4f6; }
+    .checklist-item:last-child { border-bottom: none; }
+    .checklist-item input[type="checkbox"] { width: 1.25rem; height: 1.25rem; accent-color: #2d6a4f; flex-shrink: 0; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/9432170dbd2ae0df.resizing_sdk.js" type="text/javascript" integrity="sha512-FeT+58sb1f9ejWPWFjCbJvTT+SDwGV+ngrHUnlO7TWEOoqwOLj6p256kO3vOL7DIWl1cIgrobiof8v2bOigwPg=="></script>
+ </head>
+ <body data-template-id="__page-root" class="w-full min-h-screen" style="background: rgb(250, 247, 240);">
+  <header data-template-id="header-section" class="canva-header relative overflow-hidden" style="background: rgb(27, 67, 50);"><img data-template-id="hero-image" class="canva-image absolute inset-0 w-full h-full object-cover opacity-75 saturate-[0.65]" loading="lazy" src="https://images.pexels.com/photos/1578750/pexels-photo-1578750.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1920" alt="Explore a forked trail in Manning Park amidst lush greenery and conifer trees">
+   <div class="relative z-10 bg-gradient-to-b from-[#1b4332]/70 via-[#1b4332]/45 to-[#1b4332]/25 p-6 pb-8 text-center">
+    <h1 data-template-id="app-title" class="canva-text text-white font-bold drop-shadow-lg" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 32px;">Wise Family Living Road Trip Explorer</h1>
+    <p data-template-id="app-tagline" class="canva-text text-white/90 mt-1" style="color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 16px;">Plan, track &amp; treasure every mile together</p>
+   </div>
+  </header>
+  <nav class="sticky top-0 z-50 bg-white shadow-md overflow-x-auto">
+   <div class="flex gap-1 p-2 min-w-max">
+    <button class="tab-btn active px-3 py-2 rounded-full text-sm font-medium whitespace-nowrap" data-tab="trip">🚗 Adventure</button> <button class="tab-btn px-3 py-2 rounded-full text-sm font-medium whitespace-nowrap" data-tab="map">🗺️ Map</button> <button class="tab-btn px-3 py-2 rounded-full text-sm font-medium whitespace-nowrap" data-tab="stops">🏨 Stops</button> <button class="tab-btn px-3 py-2 rounded-full text-sm font-medium whitespace-nowrap" data-tab="money">💵 Funds</button> <button class="tab-btn px-3 py-2 rounded-full text-sm font-medium whitespace-nowrap" data-tab="learn">📚 Learn</button> <button class="tab-btn px-3 py-2 rounded-full text-sm font-medium whitespace-nowrap" data-tab="journal">📝 Journal</button> <button class="tab-btn px-3 py-2 rounded-full text-sm font-medium whitespace-nowrap" data-tab="toolbox">🧰 Toolbox</button> <button class="tab-btn px-3 py-2 rounded-full text-sm font-medium whitespace-nowrap" data-tab="resources">💭 Local</button>
+   </div>
+  </nav>
+  <main class="max-w-4xl mx-auto p-4 sm:p-6">
+   <!-- TRIP SETUP -->
+   <div class="section active" id="section-trip">
+    <h2 data-template-id="trip-heading" class="canva-text font-bold mb-4" style="color: rgb(27, 67, 50); font-weight: 700; font-style: normal; font-size: 24px;">Trip Setup</h2>
+    <form id="trip-form" class="space-y-4">
+     <div class="border-t-2 border-gray-200 pt-3">
+      <h3 class="font-semibold text-gray-800 mb-3">📍 Adventure Details</h3>
+      <div class="space-y-3"><input id="f-trip-name" type="text" placeholder="Trip Name" class="w-full p-3 border rounded-xl">
+       <div class="grid grid-cols-2 gap-3"><input id="f-main-start" type="text" placeholder="Start Location" class="p-3 border rounded-xl"> <input id="f-main-end" type="text" placeholder="End Location" class="p-3 border rounded-xl">
+       </div>
+       <div class="grid grid-cols-2 gap-3"><input id="f-trip-start-date" type="date" class="p-3 border rounded-xl"> <input id="f-trip-end-date" type="date" class="p-3 border rounded-xl">
+       </div><textarea id="f-general-notes" placeholder="General Trip Notes" rows="2" class="w-full p-3 border rounded-xl"></textarea>
+      </div>
+     </div>
+     <div class="border-t-2 border-gray-200 pt-3">
+      <h3 class="font-semibold text-gray-800 mb-3">🚗 Transportation Plan</h3>
+      <div class="space-y-2">
+       <label class="flex items-center gap-2"><input type="checkbox" id="check-driving" class="w-5 h-5" data-transport="driving"><span class="text-sm font-medium">🚗 Driving</span></label> <label class="flex items-center gap-2"><input type="checkbox" id="check-flying" class="w-5 h-5" data-transport="flying"><span class="text-sm font-medium">✈️ Flying</span></label> <label class="flex items-center gap-2"><input type="checkbox" id="check-rv" class="w-5 h-5" data-transport="rv"><span class="text-sm font-medium">🚐 RV / Camper</span></label> <label class="flex items-center gap-2"><input type="checkbox" id="check-rental" class="w-5 h-5" data-transport="rental"><span class="text-sm font-medium">🚙 Rental Car</span></label> <label class="flex items-center gap-2"><input type="checkbox" id="check-train" class="w-5 h-5" data-transport="train"><span class="text-sm font-medium">🚂 Train</span></label> <label class="flex items-center gap-2"><input type="checkbox" id="check-cruise" class="w-5 h-5" data-transport="cruise"><span class="text-sm font-medium">🚢 Cruise</span></label> <label class="flex items-center gap-2"><input type="checkbox" id="check-bus" class="w-5 h-5" data-transport="bus"><span class="text-sm font-medium">🚌 Bus</span></label>
+      </div>
+     </div>
+     <div id="driving-details" class="hidden border-t-2 border-gray-200 pt-3" data-transport-section="driving">
+      <h3 class="font-semibold text-gray-800 mb-3">🚗 Driving Details</h3>
+      <div class="space-y-3 bg-blue-50 p-3 rounded-lg"><input id="f-driver-names" type="text" placeholder="Driver Name(s)" class="w-full p-3 border rounded-xl"> <input id="f-vehicle-nickname" type="text" placeholder="Vehicle Nickname" class="w-full p-3 border rounded-xl"> <input id="f-vehicle-type" type="text" placeholder="Vehicle Type" class="w-full p-3 border rounded-xl"> <label class="flex items-center gap-2"><input type="checkbox" id="f-round-trip" class="w-4 h-4"><span class="text-sm font-medium">Round Trip?</span></label> <input id="f-driving-start" type="text" placeholder="Driving Start Location" class="w-full p-3 border rounded-xl"> <input id="f-driving-destination" type="text" placeholder="Driving Destination" class="w-full p-3 border rounded-xl"> <textarea id="f-driving-notes" placeholder="Driving Notes" rows="2" class="w-full p-3 border rounded-xl"></textarea>
+      </div>
+     </div>
+     <div id="flying-details" class="hidden border-t-2 border-gray-200 pt-3" data-transport-section="flying">
+      <h3 class="font-semibold text-gray-800 mb-3">✈️ Flight Details</h3>
+      <div class="space-y-3 bg-purple-50 p-3 rounded-lg"><input id="f-traveler-names" type="text" placeholder="Traveler Name(s)" class="w-full p-3 border rounded-xl"> <input id="f-airline" type="text" placeholder="Airline" class="w-full p-3 border rounded-xl"> <input id="f-flight-number" type="text" placeholder="Flight Number" class="w-full p-3 border rounded-xl"> <input id="f-confirmation-code" type="text" placeholder="Confirmation Number" class="w-full p-3 border rounded-xl">
+       <div class="grid grid-cols-2 gap-3"><input id="f-departure-airport" type="text" placeholder="Departure Airport" class="p-3 border rounded-xl"> <input id="f-arrival-airport" type="text" placeholder="Arrival Airport" class="p-3 border rounded-xl">
+       </div>
+       <div class="grid grid-cols-2 gap-3"><input id="f-departure-date" type="date" class="p-3 border rounded-xl"> <input id="f-return-date" type="date" class="p-3 border rounded-xl">
+       </div>
+       <div class="grid grid-cols-2 gap-3"><input id="f-ticket-cost" type="number" step="0.01" placeholder="Ticket Cost ($)" class="p-3 border rounded-xl"> <input id="f-payment-method" type="text" placeholder="Payment Method" class="p-3 border rounded-xl">
+       </div><textarea id="f-flying-notes" placeholder="Flight Notes" rows="2" class="w-full p-3 border rounded-xl"></textarea>
+      </div>
+     </div>
+     <div id="rv-details" class="hidden border-t-2 border-gray-200 pt-3" data-transport-section="rv">
+      <h3 class="font-semibold text-gray-800 mb-3">🚐 RV / Camper Details</h3>
+      <div class="space-y-3 bg-cyan-50 p-3 rounded-lg"><input id="f-rv-type" type="text" placeholder="RV Type" class="w-full p-3 border rounded-xl"> <input id="f-rv-length" type="text" placeholder="Length" class="w-full p-3 border rounded-xl"> <input id="f-rv-rental-company" type="text" placeholder="Rental Company" class="w-full p-3 border rounded-xl"> <input id="f-rv-pickup-location" type="text" placeholder="Pickup Location" class="w-full p-3 border rounded-xl">
+       <div class="grid grid-cols-2 gap-3"><input id="f-rv-pickup-date" type="date" class="p-3 border rounded-xl"> <input id="f-rv-return-date" type="date" class="p-3 border rounded-xl">
+       </div><textarea id="f-rv-notes" placeholder="RV Notes" rows="2" class="w-full p-3 border rounded-xl"></textarea>
+      </div>
+     </div>
+     <div id="rental-details" class="hidden border-t-2 border-gray-200 pt-3" data-transport-section="rental">
+      <h3 class="font-semibold text-gray-800 mb-3">🚙 Rental Car Details</h3>
+      <div class="space-y-3 bg-sky-50 p-3 rounded-lg"><input id="f-rental-company" type="text" placeholder="Rental Company" class="w-full p-3 border rounded-xl"> <input id="f-rental-pickup-location" type="text" placeholder="Pickup Location" class="w-full p-3 border rounded-xl">
+       <div class="grid grid-cols-2 gap-3"><input id="f-rental-pickup-date" type="date" class="p-3 border rounded-xl"> <input id="f-rental-return-date" type="date" class="p-3 border rounded-xl">
+       </div><input id="f-rental-car-type" type="text" placeholder="Car Type" class="w-full p-3 border rounded-xl"> <input id="f-rental-confirmation" type="text" placeholder="Confirmation Number" class="w-full p-3 border rounded-xl"> <textarea id="f-rental-notes" placeholder="Rental Notes" rows="2" class="w-full p-3 border rounded-xl"></textarea>
+      </div>
+     </div>
+     <div id="train-details" class="hidden border-t-2 border-gray-200 pt-3" data-transport-section="train">
+      <h3 class="font-semibold text-gray-800 mb-3">🚂 Train Details</h3>
+      <div class="space-y-3 bg-amber-50 p-3 rounded-lg"><input id="f-train-service" type="text" placeholder="Train Service" class="w-full p-3 border rounded-xl"> <input id="f-train-route" type="text" placeholder="Route" class="w-full p-3 border rounded-xl"> <input id="f-train-departure-station" type="text" placeholder="Departure Station" class="w-full p-3 border rounded-xl"> <input id="f-train-arrival-station" type="text" placeholder="Arrival Station" class="w-full p-3 border rounded-xl"> <input id="f-train-departure-date" type="date" class="w-full p-3 border rounded-xl"> <input id="f-train-confirmation" type="text" placeholder="Confirmation Number" class="w-full p-3 border rounded-xl"> <textarea id="f-train-notes" placeholder="Train Notes" rows="2" class="w-full p-3 border rounded-xl"></textarea>
+      </div>
+     </div>
+     <div id="cruise-details" class="hidden border-t-2 border-gray-200 pt-3" data-transport-section="cruise">
+      <h3 class="font-semibold text-gray-800 mb-3">🚢 Cruise Details</h3>
+      <div class="space-y-3 bg-teal-50 p-3 rounded-lg"><input id="f-cruise-line" type="text" placeholder="Cruise Line" class="w-full p-3 border rounded-xl"> <input id="f-cruise-ship" type="text" placeholder="Ship Name" class="w-full p-3 border rounded-xl"> <input id="f-cruise-departure-port" type="text" placeholder="Departure Port" class="w-full p-3 border rounded-xl">
+       <div class="grid grid-cols-2 gap-3"><input id="f-cruise-departure-date" type="date" class="p-3 border rounded-xl"> <input id="f-cruise-return-date" type="date" class="p-3 border rounded-xl">
+       </div><input id="f-cruise-confirmation" type="text" placeholder="Confirmation Number" class="w-full p-3 border rounded-xl"> <textarea id="f-cruise-notes" placeholder="Cruise Notes" rows="2" class="w-full p-3 border rounded-xl"></textarea>
+      </div>
+     </div>
+     <div id="bus-details" class="hidden border-t-2 border-gray-200 pt-3" data-transport-section="bus">
+      <h3 class="font-semibold text-gray-800 mb-3">🚌 Bus Details</h3>
+      <div class="space-y-3 bg-indigo-50 p-3 rounded-lg"><input id="f-bus-company" type="text" placeholder="Bus Company" class="w-full p-3 border rounded-xl"> <input id="f-bus-route" type="text" placeholder="Route" class="w-full p-3 border rounded-xl"> <input id="f-bus-departure-station" type="text" placeholder="Departure Station" class="w-full p-3 border rounded-xl"> <input id="f-bus-arrival-station" type="text" placeholder="Arrival Station" class="w-full p-3 border rounded-xl"> <input id="f-bus-departure-date" type="date" class="w-full p-3 border rounded-xl"> <input id="f-bus-confirmation" type="text" placeholder="Confirmation Number" class="w-full p-3 border rounded-xl"> <textarea id="f-bus-notes" placeholder="Bus Notes" rows="2" class="w-full p-3 border rounded-xl"></textarea>
+      </div>
+     </div><button type="submit" data-template-id="save-trip-btn" class="canva-button w-full py-3 rounded-xl font-semibold text-white" style="background: rgb(45, 106, 79); color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 16px;">Save Trip Details</button>
+    </form>
+    <div id="trip-status" class="mt-3 text-center text-sm hidden"></div>
+    <div id="trip-summary" class="mt-6 hidden bg-green-50 border border-green-200 rounded-xl p-4 space-y-2">
+     <h3 class="font-semibold text-green-800 mb-2">✓ Trip Setup Complete</h3>
+     <div id="summary-content" class="text-sm space-y-2"></div>
+    </div>
+   </div>
+   <!-- MAP -->
+   <div class="section" id="section-map">
+    <h2 data-template-id="map-heading" class="canva-text font-bold mb-4" style="color: rgb(27, 67, 50); font-weight: 700; font-style: normal; font-size: 24px;">Today's Drive</h2>
+    <div class="bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl p-6 space-y-4 mb-6 border-l-4 border-amber-400">
+     <h3 class="font-semibold text-amber-800">🌅 Start of Day</h3>
+     <div class="space-y-3">
+      <div><label class="text-sm font-semibold text-gray-700 block" for="map-date">Today's Date</label><input id="map-date" type="date" class="w-full p-3 border rounded-xl">
+      </div>
+      <div><label class="text-sm font-semibold text-gray-700 block" for="map-morning-state">Morning State</label><select id="map-morning-state" class="w-full p-3 border rounded-xl"><option value="">— Select State —</option></select>
+      </div>
+      <div><label class="text-sm font-semibold text-gray-700 block" for="map-morning-city">Morning City or Campground</label><input id="map-morning-city" type="text" placeholder="City, campground, hotel" class="w-full p-3 border rounded-xl">
+      </div>
+      <div class="grid grid-cols-2 gap-3">
+       <div><label class="text-sm font-semibold text-gray-700 block" for="map-morning-tz">Time Zone</label><select id="map-morning-tz" class="w-full p-3 border rounded-xl"><option value="">Select</option><option>Eastern</option><option>Central</option><option>Mountain</option><option>Pacific</option><option>Alaska</option><option>Hawaii</option></select>
+       </div>
+       <div><label class="text-sm font-semibold text-gray-700 block" for="map-morning-temp">Temp (°F)</label><input id="map-morning-temp" type="number" placeholder="°F" class="w-full p-3 border rounded-xl text-center">
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-6 space-y-4 mb-6 border-l-4 border-green-400">
+     <h3 class="font-semibold text-green-800">🗺️ Today's Adventure</h3><textarea id="map-adventure" placeholder="What are we doing today?" rows="4" class="w-full p-3 border rounded-xl"></textarea>
+    </div>
+    <div class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-6 space-y-4 mb-6 border-l-4 border-blue-400">
+     <h3 class="font-semibold text-blue-800">🚗 Today's Drive</h3>
+     <div class="grid grid-cols-2 gap-3">
+      <div><label class="text-sm font-semibold text-gray-700 block" for="map-morning-odo">Morning Odometer</label><input id="map-morning-odo" type="number" placeholder="0.0" class="w-full p-3 border rounded-xl">
+      </div>
+      <div><label class="text-sm font-semibold text-gray-700 block" for="map-evening-odo">Evening Odometer</label><input id="map-evening-odo" type="number" placeholder="End miles" class="w-full p-3 border rounded-xl">
+      </div>
+     </div>
+     <div class="bg-white rounded-lg p-4 space-y-2 border border-blue-100">
+      <div class="flex justify-between text-sm"><span class="text-gray-600">Miles Driven Today</span><input id="map-miles-driven" type="number" class="w-20 p-1 font-bold text-blue-700 text-right border-0 bg-transparent" readonly="">
+      </div>
+      <div class="flex justify-between text-sm"><span class="text-gray-600">Total Trip Miles</span><input id="map-total-miles" type="number" class="w-20 p-1 font-bold text-blue-700 text-right border-0 bg-transparent" readonly="">
+      </div>
+     </div>
+    </div>
+    <div class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl p-6 space-y-4 mb-6 border-l-4 border-indigo-400">
+     <h3 class="font-semibold text-indigo-800">🌙 End of Day</h3>
+     <div class="space-y-3">
+      <div><label class="text-sm font-semibold text-gray-700 block" for="map-evening-state">Evening State</label><select id="map-evening-state" class="w-full p-3 border rounded-xl"><option value="">— Select State —</option></select>
+      </div>
+      <div><label class="text-sm font-semibold text-gray-700 block" for="map-evening-city">Evening City</label><input id="map-evening-city" type="text" placeholder="City, campground, hotel" class="w-full p-3 border rounded-xl">
+      </div>
+      <div class="grid grid-cols-2 gap-3">
+       <div><label class="text-sm font-semibold text-gray-700 block" for="map-evening-tz">Time Zone</label><select id="map-evening-tz" class="w-full p-3 border rounded-xl"><option value="">Select</option><option>Eastern</option><option>Central</option><option>Mountain</option><option>Pacific</option><option>Alaska</option><option>Hawaii</option></select>
+       </div>
+       <div><label class="text-sm font-semibold text-gray-700 block" for="map-evening-temp">Temp (°F)</label><input id="map-evening-temp" type="number" placeholder="°F" class="w-full p-3 border rounded-xl text-center">
+       </div>
+      </div>
+      <div><label class="text-sm font-semibold text-gray-700 block" for="map-evening-reflection">One sentence about tonight</label><input id="map-evening-reflection" type="text" placeholder="We ended the day..." class="w-full p-3 border rounded-xl">
+      </div>
+     </div>
+    </div>
+   </div>
+   <!-- TRIP STOPS -->
+   <div class="section" id="section-stops">
+    <div class="mb-6">
+     <h2 data-template-id="stops-heading" class="canva-text font-bold mb-2" style="color: rgb(27, 67, 50); font-weight: 700; font-style: normal; font-size: 24px;">Trip Stops</h2>
+     <p data-template-id="stops-subtitle" class="canva-text text-sm" style="color: rgb(107, 114, 128); font-weight: 400; font-style: normal; font-size: 14px;">Keep every reservation, address, payment, and travel detail organized in one place.</p>
+    </div>
+    <div id="stops-today" class="mb-8"></div>
+    <div class="mb-8">
+     <h3 class="font-semibold text-gray-800 mb-4 text-lg">📊 Trip Overview</h3>
+     <div id="stops-overview" class="grid grid-cols-2 sm:grid-cols-3 gap-3"></div>
+    </div>
+    <div class="mb-6">
+     <h3 class="font-semibold text-gray-800 mb-4 text-lg">📍 Your Journey</h3>
+     <div id="stops-timeline" class="space-y-4"></div>
+    </div><button type="button" id="stops-add-btn" class="w-full py-4 border-2 border-dashed border-emerald-300 rounded-2xl text-emerald-700 font-semibold hover:bg-emerald-50 transition text-lg mb-6">+ Add New Stop</button> <button type="button" id="stops-scan-btn" class="w-full py-4 border-2 border-dashed border-blue-300 rounded-2xl text-blue-700 font-semibold hover:bg-blue-50 transition text-lg mb-2">📷 Scan Reservation / Receipt</button>
+    <p class="text-xs text-gray-500 text-center mb-6 px-2">Automatically fill this form from a reservation confirmation, hotel confirmation, campground reservation, invoice, receipt, or confirmation email. Review and edit all information before saving.</p>
+    <div id="stops-form-wrapper" class="hidden mb-8 bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
+     <h4 class="font-bold text-gray-800 mb-5 text-lg">🏨 Add Trip Stop</h4>
+     <form id="stops-form" class="space-y-4">
+      <input id="sf-name" type="text" placeholder="Property Name" class="w-full p-3 border rounded-xl text-lg"> <select id="sf-type" class="w-full p-3 border rounded-xl"><option value="">Property Type</option><option>Campground</option><option>Hotel</option><option>Motel</option><option>Airbnb</option><option>Cabin</option><option>RV Park</option><option>Campsite</option><option>Family/Friend</option><option>Other</option></select> <input id="sf-address" type="text" placeholder="Full Address" class="w-full p-3 border rounded-xl">
+      <div class="grid grid-cols-2 gap-3"><input id="sf-phone" type="tel" placeholder="Phone Number" class="p-3 border rounded-xl"> <input id="sf-email" type="email" placeholder="Email" class="p-3 border rounded-xl">
+      </div><input id="sf-website" type="url" placeholder="Website URL" class="w-full p-3 border rounded-xl"> <input id="sf-confirmation" type="text" placeholder="Reservation Number" class="w-full p-3 border rounded-xl">
+      <div class="grid grid-cols-2 gap-3">
+       <div><label class="text-xs text-gray-500 font-semibold">Check-In Date</label><input id="sf-checkin" type="date" class="w-full p-3 border rounded-xl mt-1">
+       </div>
+       <div><label class="text-xs text-gray-500 font-semibold">Check-Out Date</label><input id="sf-checkout" type="date" class="w-full p-3 border rounded-xl mt-1">
+       </div>
+      </div>
+      <div class="grid grid-cols-2 gap-3">
+       <div><label class="text-xs text-gray-500 font-semibold">Check-In Time</label><input id="sf-checkin-time" type="time" class="w-full p-3 border rounded-xl mt-1">
+       </div>
+       <div><label class="text-xs text-gray-500 font-semibold">Check-Out Time</label><input id="sf-checkout-time" type="time" class="w-full p-3 border rounded-xl mt-1">
+       </div>
+      </div>
+      <div class="grid grid-cols-2 gap-3"><input id="sf-site-number" type="text" placeholder="Site/Room Number" class="p-3 border rounded-xl"> <input id="sf-site-type" type="text" placeholder="Site Type" class="p-3 border rounded-xl">
+      </div>
+      <div class="grid grid-cols-3 gap-3">
+       <div><label class="text-xs text-gray-500 font-semibold">Price/Night</label><input id="sf-rate" type="number" step="0.01" placeholder="$0" class="w-full p-3 border rounded-xl mt-1">
+       </div>
+       <div><label class="text-xs text-gray-500 font-semibold">Taxes &amp; Fees</label><input id="sf-taxes" type="number" step="0.01" placeholder="$0" class="w-full p-3 border rounded-xl mt-1">
+       </div>
+       <div><label class="text-xs text-gray-500 font-semibold">Total Cost</label><input id="sf-total" type="number" step="0.01" placeholder="$0" class="w-full p-3 border rounded-xl mt-1 bg-gray-50" readonly="">
+       </div>
+      </div>
+      <div class="grid grid-cols-2 gap-3">
+       <div><label class="text-xs text-gray-500 font-semibold">Amount Paid</label><input id="sf-paid" type="number" step="0.01" placeholder="$0" class="w-full p-3 border rounded-xl mt-1">
+       </div>
+       <div><label class="text-xs text-gray-500 font-semibold">Payment Method</label><input id="sf-payment-method" type="text" placeholder="Visa, Cash..." class="w-full p-3 border rounded-xl mt-1">
+       </div>
+      </div><textarea id="sf-notes" placeholder="Notes (pets, gate codes, early arrival...)" rows="3" class="w-full p-3 border rounded-xl"></textarea>
+      <div class="flex gap-3"><button type="submit" class="flex-1 py-3 bg-emerald-700 text-white rounded-xl font-semibold hover:bg-emerald-800 transition text-lg">Save Stop</button> <button type="button" id="stops-cancel-btn" class="px-6 py-3 bg-gray-200 rounded-xl font-medium hover:bg-gray-300 transition">Cancel</button>
+      </div>
+     </form>
+     <div id="stops-form-status" class="mt-3 text-center text-sm hidden"></div>
+    </div>
+   </div>
+   <!-- TRIP MONEY -->
+   <div class="section" id="section-money">
+    <div class="text-center mb-8">
+     <h2 data-template-id="money-title" class="canva-text font-bold mb-2" style="color: rgb(27, 67, 50); font-weight: 700; font-style: normal; font-size: 24px;">Adventure Funds</h2>
+     <p data-template-id="money-subtitle" class="canva-text text-gray-600" style="color: rgb(107, 114, 128); font-weight: 400; font-style: normal; font-size: 14px;">Plan your adventure with confidence. Set savings goals before your trip, track your progress each payday, and leave for your adventure fully prepared.</p>
+    </div>
+    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6">
+     <label class="text-sm font-semibold text-gray-700 block mb-3" for="fund-selector">Choose a Fund</label> <select id="fund-selector" class="w-full p-3 border rounded-xl mb-4"> <option value="">— Select a Fund —</option> <option value="lodging">Lodging</option> <option value="food">Food</option> <option value="transport">Transportation</option> <option value="entertainment">Entertainment</option> <option value="misc">Miscellaneous</option> </select>
+     <div id="fund-description" class="text-sm text-gray-700 leading-relaxed"></div>
+    </div>
+    <div id="fund-details-section" class="hidden bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6 space-y-4">
+     <div><label class="text-xs text-gray-500 font-semibold block mb-2">💰 Fund Goal</label><input id="fund-goal" type="number" step="0.01" placeholder="$0" class="w-full p-3 border rounded-xl text-lg font-semibold">
+     </div>
+     <div><label class="text-xs text-gray-500 font-semibold block mb-2">✓ Amount Already Saved</label><input id="fund-saved" type="number" step="0.01" placeholder="$0" class="w-full p-3 border rounded-xl text-lg font-semibold">
+     </div>
+     <div class="grid grid-cols-2 gap-4">
+      <div><label class="text-xs text-gray-500 font-semibold block mb-2">📅 Trip Start Date</label><input id="fund-trip-date" type="date" class="w-full p-3 border rounded-xl">
+      </div>
+      <div><label class="text-xs text-gray-500 font-semibold block mb-2">Next Payday</label><input id="fund-next-payday" type="date" class="w-full p-3 border rounded-xl">
+      </div>
+     </div>
+     <div><label class="text-xs text-gray-500 font-semibold block mb-2">How Often Are You Paid?</label> <select id="fund-pay-frequency" class="w-full p-3 border rounded-xl"> <option value="">— Select —</option> <option>Weekly</option> <option>Every Two Weeks</option> <option>Twice a Month</option> <option>Monthly</option> <option>Variable Income or Tips</option> </select>
+     </div>
+    </div>
+    <div id="calculations-section" class="hidden bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-6 mb-6 border border-emerald-200">
+     <h3 class="font-bold text-emerald-800 mb-4 text-lg">Your Savings Plan</h3>
+     <div class="space-y-3">
+      <div class="grid grid-cols-2 gap-3">
+       <div class="bg-white rounded-xl p-4 text-center">
+        <p class="text-xs text-gray-500 font-semibold mb-1">Saved So Far</p>
+        <p class="text-2xl font-bold text-teal-700" id="calc-saved">$0</p>
+       </div>
+       <div class="bg-white rounded-xl p-4 text-center">
+        <p class="text-xs text-gray-500 font-semibold mb-1">Amount Remaining</p>
+        <p class="text-2xl font-bold text-amber-600" id="calc-remaining">$0</p>
+       </div>
+      </div>
+      <div class="bg-white rounded-xl p-4">
+       <div class="flex justify-between items-center mb-2">
+        <span class="text-xs text-gray-500 font-semibold">Percentage Funded</span> <span class="text-lg font-bold text-emerald-700" id="calc-percentage">0%</span>
+       </div>
+       <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+        <div id="calc-progress-bar" class="h-full bg-emerald-600 rounded-full transition-all duration-300" style="width: 0%"></div>
+       </div>
+      </div>
+      <div class="bg-white rounded-xl p-4">
+       <p class="text-xs text-gray-500 font-semibold mb-1">Paydays Remaining</p>
+       <p class="text-sm text-gray-700 leading-relaxed" id="calc-paydays">—</p>
+      </div>
+      <div class="bg-white rounded-xl p-4">
+       <p class="text-xs text-gray-500 font-semibold mb-1">Amount Needed Per Payday</p>
+       <p class="text-xl font-bold text-teal-700" id="calc-per-payday">—</p>
+      </div>
+     </div>
+    </div> <button type="button" id="add-money-btn" data-template-id="money-add-btn" class="canva-button w-full py-3 rounded-xl font-semibold text-white mb-6 hidden" style="background: rgb(45, 106, 79); color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 16px;">➕ Add Money</button>
+    <div id="add-money-form" class="hidden bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-6 mb-6 border border-blue-200">
+     <h4 class="font-semibold text-blue-900 mb-4">Add a Deposit</h4>
+     <form id="deposit-form" class="space-y-3">
+      <div><label class="text-xs text-gray-600 font-semibold block mb-1">Deposit Amount</label><input id="deposit-amount" type="number" step="0.01" placeholder="$0" class="w-full p-3 border rounded-xl text-lg font-semibold">
+      </div>
+      <div><label class="text-xs text-gray-600 font-semibold block mb-1">Deposit Date</label><input id="deposit-date" type="date" class="w-full p-3 border rounded-xl">
+      </div>
+      <div><label class="text-xs text-gray-600 font-semibold block mb-1">Optional Note</label><input id="deposit-note" type="text" placeholder="e.g., Tax refund, bonus..." class="w-full p-3 border rounded-xl text-sm">
+      </div>
+      <div class="flex gap-2">
+       <button type="submit" class="flex-1 py-3 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition">Save Deposit</button> <button type="button" onclick="closeFundForm()" class="px-4 py-3 bg-white text-gray-700 rounded-xl font-medium border border-gray-200 hover:bg-gray-50 transition">Cancel</button>
+      </div>
+     </form>
+     <div id="deposit-status" class="text-center text-sm hidden mt-2"></div>
+    </div>
+    <div id="progress-scene-section" class="hidden bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6">
+     <div class="text-center mb-4">
+      <svg id="progress-scene" viewBox="0 0 400 200" class="w-full h-auto" style="max-height: 200px;">
+       <rect width="400" height="200" fill="#e0f2fe"></rect> <rect x="0" y="120" width="400" height="80" fill="#e5e7eb"></rect> <line x1="0" y1="140" x2="400" y2="140" stroke="#fff" stroke-width="2" stroke-dasharray="20,10"></line> <g id="vehicle" transform="translate(50, 100)">
+        <rect x="0" y="0" width="40" height="25" rx="3" fill="#dc2626"></rect>
+        <rect x="35" y="5" width="8" height="8" fill="#60a5fa"></rect>
+        <circle cx="8" cy="28" r="4" fill="#1f2937"></circle>
+        <circle cx="32" cy="28" r="4" fill="#1f2937"></circle>
+       </g> <g id="destination">
+       </g> <text id="progress-message" x="200" y="180" text-anchor="middle" font-size="12" font-weight="bold" fill="#1b4332">
+        Your savings journey begins here.
+       </text>
+      </svg>
+     </div>
+    </div>
+    <div id="tip-section" class="hidden bg-white rounded-2xl shadow-sm border border-amber-200 p-5">
+     <h4 class="font-semibold text-amber-900 mb-2">💡 Wise Family Living Tip</h4>
+     <p id="fund-tip" class="text-sm text-gray-700 leading-relaxed"></p>
+    </div>
+   </div>
+   <!-- LEARN -->
+   <div class="section" id="section-learn">
+    <div class="mb-6">
+     <h2 data-template-id="learn-heading" class="canva-text font-bold mb-2" style="color: rgb(27, 67, 50); font-weight: 700; font-style: normal; font-size: 24px;">Explore &amp; Learn</h2>
+     <p data-template-id="learn-subtitle" class="canva-text text-gray-600 text-sm mb-4" style="color: rgb(107, 114, 128); font-weight: 400; font-style: normal; font-size: 14px;">Discover the stories, places, wildlife, history, hidden gems, and fun facts that make every state worth remembering.</p>
+    </div>
+    <div class="mb-6 bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+     <div class="mb-4"><label class="text-sm font-semibold text-gray-700 block mb-3">Choose a State</label> <select id="learn-state" class="w-full p-3 border rounded-xl text-lg"><option value="" disabled="" selected="">Select a state to begin exploring</option> <option value="Alabama">Alabama</option> <option value="Alaska">Alaska</option> <option value="Arizona">Arizona</option> <option value="Arkansas">Arkansas</option> <option value="California">California</option> <option value="Colorado">Colorado</option> <option value="Connecticut">Connecticut</option> <option value="Delaware">Delaware</option> <option value="Florida">Florida</option> <option value="Georgia">Georgia</option> <option value="Hawaii">Hawaii</option> <option value="Idaho">Idaho</option> <option value="Illinois">Illinois</option> <option value="Indiana">Indiana</option> <option value="Iowa">Iowa</option> <option value="Kansas">Kansas</option> <option value="Kentucky">Kentucky</option> <option value="Louisiana">Louisiana</option> <option value="Maine">Maine</option> <option value="Maryland">Maryland</option> <option value="Massachusetts">Massachusetts</option> <option value="Michigan">Michigan</option> <option value="Minnesota">Minnesota</option> <option value="Mississippi">Mississippi</option> <option value="Missouri">Missouri</option> <option value="Montana">Montana</option> <option value="Nebraska">Nebraska</option> <option value="Nevada">Nevada</option> <option value="New Hampshire">New Hampshire</option> <option value="New Jersey">New Jersey</option> <option value="New Mexico">New Mexico</option> <option value="New York">New York</option> <option value="North Carolina">North Carolina</option> <option value="North Dakota">North Dakota</option> <option value="Ohio">Ohio</option> <option value="Oklahoma">Oklahoma</option> <option value="Oregon">Oregon</option> <option value="Pennsylvania">Pennsylvania</option> <option value="Rhode Island">Rhode Island</option> <option value="South Carolina">South Carolina</option> <option value="South Dakota">South Dakota</option> <option value="Tennessee">Tennessee</option> <option value="Texas">Texas</option> <option value="Utah">Utah</option> <option value="Vermont">Vermont</option> <option value="Virginia">Virginia</option> <option value="Washington">Washington</option> <option value="West Virginia">West Virginia</option> <option value="Wisconsin">Wisconsin</option> <option value="Wyoming">Wyoming</option></select>
+     </div>
+     <div class="mb-4"><label class="text-sm font-semibold text-gray-700 block mb-3">Choose a Topic</label> <select id="learn-topic" class="w-full p-3 border rounded-xl text-lg" disabled=""> <option value="" disabled="" selected="">Select a state first.</option> </select>
+     </div>
+     <p id="learn-status" class="text-sm text-gray-500 mt-4">Choose a state above to begin.</p>
+    </div>
+    <div id="learn-content" class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hidden">
+     <div id="learn-content-inner" class="space-y-4"></div>
+    </div>
+   </div>
+   <!-- JOURNAL -->
+   <div class="section" id="section-journal">
+    <div id="journal-home">
+     <div class="text-center mb-8">
+      <h2 data-template-id="journal-heading" class="canva-text font-bold mb-2" style="color: rgb(27, 67, 50); font-weight: 700; font-style: normal; font-size: 24px;">Travel Memories</h2>
+      <p data-template-id="journal-subtitle" class="canva-text text-gray-600" style="color: rgb(107, 114, 128); font-weight: 400; font-style: normal; font-size: 16px;">Capture today's story so you'll remember it forever.</p>
+     </div>
+     <div class="space-y-4 mb-10">
+      <button type="button" id="btn-add-story" data-template-id="journal-add-btn" class="canva-button w-full py-4 rounded-2xl font-semibold text-white text-lg shadow-md" style="background: rgb(45, 106, 79); color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 16px;">➕ Add Today's Story</button> <button type="button" id="btn-trip-book" data-template-id="journal-book-btn" class="canva-button w-full py-4 rounded-2xl font-semibold text-lg shadow-md border-2" style="background: rgb(255, 255, 255); color: rgb(45, 106, 79); font-weight: 600; font-style: normal; font-size: 16px;">📖 Create My Trip Book</button>
+     </div>
+     <div id="journal-timeline" class="space-y-4"></div>
+     <p id="journal-empty" class="text-center text-gray-400 py-8">Your story begins with your first entry ✨</p>
+    </div>
+    <div id="journal-story-form" class="hidden">
+     <button type="button" id="journal-back-btn" class="mb-4 text-emerald-700 font-medium flex items-center gap-1">← Back to Memories</button>
+     <div class="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-6 mb-6 border border-emerald-200">
+      <h3 class="font-bold text-emerald-800 mb-4 text-lg">📍 Today's Details</h3>
+      <div class="space-y-3">
+       <div class="grid grid-cols-2 gap-3">
+        <div><label class="text-xs text-gray-600 font-semibold" for="js-date">Date</label><input id="js-date" type="date" class="w-full p-3 border rounded-xl mt-1">
+        </div>
+        <div><label class="text-xs text-gray-600 font-semibold" for="js-day">Trip Day</label><input id="js-day" type="number" placeholder="Day #" class="w-full p-3 border rounded-xl mt-1">
+        </div>
+       </div>
+       <div><label class="text-xs text-gray-600 font-semibold" for="js-state">Current State</label><select id="js-state" class="w-full p-3 border rounded-xl mt-1"><option value="">— Select —</option></select>
+       </div>
+       <div><label class="text-xs text-gray-600 font-semibold" for="js-location">Current Location</label><input id="js-location" type="text" placeholder="City, park, or campground" class="w-full p-3 border rounded-xl mt-1">
+       </div>
+       <div><label class="text-xs text-gray-600 font-semibold" for="js-lodging">Where are you calling home tonight?</label><input id="js-lodging" type="text" placeholder="Hotel, RV, campground, cabin, cruise ship, Airbnb, or a family member's home" class="w-full p-3 border rounded-xl mt-1">
+       </div>
+       <div><label class="text-xs text-gray-600 font-semibold">👥 Who Shared Today With Us? <span class="font-normal text-gray-400">(optional)</span></label>
+        <div id="js-people-list" class="space-y-2 mt-1"><input type="text" class="js-person-input w-full p-3 border rounded-xl" placeholder="Name (family, friend, relative, or someone you met)"></div><button type="button" id="js-add-person-btn" class="mt-2 text-xs font-semibold text-emerald-700 hover:text-emerald-800">+ Add Person</button>
+       </div>
+      </div>
+     </div>
+     <div class="bg-white rounded-2xl p-6 mb-6 shadow-sm border border-gray-100">
+      <h3 class="font-bold text-gray-800 mb-2 text-lg">📷 Today's Story Photos</h3>
+      <p class="text-sm text-gray-500 mb-4">Choose the photos that tell today's story. Tap a category to add, remove, or reorder photos.</p>
+      <div class="grid grid-cols-2 gap-3" id="journal-photo-grid">
+       <div class="journal-photo-slot" data-category="view" data-emoji="🏞" data-label="Best View" onclick="openPhotoGallery('view')"><div class="journal-photo-cover"><span class="text-2xl block mb-1">🏞</span></div><span class="text-xs font-medium text-gray-600 journal-photo-label">Best View</span><span class="journal-photo-badge hidden">📷 0</span>
+       </div>
+       <div class="journal-photo-slot" data-category="landmark" data-emoji="🏛" data-label="Favorite Landmark" onclick="openPhotoGallery('landmark')"><div class="journal-photo-cover"><span class="text-2xl block mb-1">🏛</span></div><span class="text-xs font-medium text-gray-600 journal-photo-label">Favorite Landmark</span><span class="journal-photo-badge hidden">📷 0</span>
+       </div>
+       <div class="journal-photo-slot" data-category="family" data-emoji="👨‍👩‍👧" data-label="Family Photo" onclick="openPhotoGallery('family')"><div class="journal-photo-cover"><span class="text-2xl block mb-1">👨‍👩‍👧</span></div><span class="text-xs font-medium text-gray-600 journal-photo-label">Family Photo</span><span class="journal-photo-badge hidden">📷 0</span>
+       </div>
+       <div class="journal-photo-slot" data-category="nature" data-emoji="🦌" data-label="Nature Moment" onclick="openPhotoGallery('nature')"><div class="journal-photo-cover"><span class="text-2xl block mb-1">🦌</span></div><span class="text-xs font-medium text-gray-600 journal-photo-label">Nature Moment</span><span class="journal-photo-badge hidden">📷 0</span>
+       </div>
+       <div class="journal-photo-slot" data-category="food" data-emoji="🍔" data-label="Best Food" onclick="openPhotoGallery('food')"><div class="journal-photo-cover"><span class="text-2xl block mb-1">🍔</span></div><span class="text-xs font-medium text-gray-600 journal-photo-label">Best Food</span><span class="journal-photo-badge hidden">📷 0</span>
+       </div>
+       <div class="journal-photo-slot" data-category="funny" data-emoji="😂" data-label="Funniest Moment" onclick="openPhotoGallery('funny')"><div class="journal-photo-cover"><span class="text-2xl block mb-1">😂</span></div><span class="text-xs font-medium text-gray-600 journal-photo-label">Funniest Moment</span><span class="journal-photo-badge hidden">📷 0</span>
+       </div>
+       <div class="journal-photo-slot" data-category="gem" data-emoji="💎" data-label="Hidden Gem" onclick="openPhotoGallery('gem')"><div class="journal-photo-cover"><span class="text-2xl block mb-1">💎</span></div><span class="text-xs font-medium text-gray-600 journal-photo-label">Hidden Gem</span><span class="journal-photo-badge hidden">📷 0</span>
+       </div>
+       <div class="journal-photo-slot" data-category="memory" data-emoji="🎟" data-label="Favorite Memory" onclick="openPhotoGallery('memory')"><div class="journal-photo-cover"><span class="text-2xl block mb-1">🎟</span></div><span class="text-xs font-medium text-gray-600 journal-photo-label">Favorite Memory</span><span class="journal-photo-badge hidden">📷 0</span>
+       </div>
+      </div>
+     </div>
+     <div id="journal-photo-gallery-modal" class="hidden fixed inset-0 bg-black/60 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4">
+      <div class="bg-white w-full sm:max-w-lg sm:rounded-2xl rounded-t-2xl max-h-[85vh] flex flex-col">
+       <div class="flex items-center justify-between p-4 border-b">
+        <h4 class="font-bold text-gray-900 text-lg"><span id="journal-gallery-emoji">🏞</span> <span id="journal-gallery-title">Best View</span></h4>
+        <button type="button" onclick="closePhotoGallery()" class="text-gray-400 hover:text-gray-600 text-2xl leading-none px-2">×</button>
+       </div>
+       <div class="p-4 overflow-y-auto flex-1">
+        <div id="journal-gallery-grid" class="grid grid-cols-3 gap-2"></div>
+        <p id="journal-gallery-empty" class="text-center text-gray-400 text-sm py-6 hidden">No photos yet. Add your first one below.</p>
+        <p id="journal-gallery-hint" class="text-xs text-gray-400 mt-2 hidden">Tap a photo to set it as the Cover Photo for this category.</p>
+       </div>
+       <div class="p-4 border-t">
+        <label class="w-full py-3 bg-emerald-700 text-white rounded-xl font-semibold hover:bg-emerald-800 transition text-center block cursor-pointer">+ Add Photos<input type="file" id="journal-gallery-file-input" accept="image/*" multiple class="hidden"></label>
+       </div>
+      </div>
+     </div>
+     <div class="bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl p-6 mb-6 border border-amber-200">
+      <h3 class="font-bold text-amber-800 mb-4 text-lg">✨ Today's Story</h3>
+      <p class="text-sm text-gray-500 mb-4">Everything is optional. Share what feels right.</p>
+      <div class="space-y-4">
+       <div><label class="text-sm font-semibold text-gray-700" for="js-memory">💛 Favorite Memory</label><input id="js-memory" type="text" placeholder="What moment stood out?" class="w-full p-3 border rounded-xl mt-1">
+       </div>
+       <div><label class="text-sm font-semibold text-gray-700" for="js-laugh">😂 Biggest Laugh</label><input id="js-laugh" type="text" placeholder="What made everyone laugh?" class="w-full p-3 border rounded-xl mt-1">
+       </div>
+       <div><label class="text-sm font-semibold text-gray-700" for="js-surprise">😮 Something That Surprised Us</label><input id="js-surprise" type="text" placeholder="What was unexpected?" class="w-full p-3 border rounded-xl mt-1">
+       </div>
+       <div><label class="text-sm font-semibold text-gray-700" for="js-learned">📚 Something We Learned</label><input id="js-learned" type="text" placeholder="A new discovery or fact" class="w-full p-3 border rounded-xl mt-1">
+       </div>
+       <div><label class="text-sm font-semibold text-gray-700" for="js-remember">💫 One Thing We Want To Remember</label><input id="js-remember" type="text" placeholder="Don't let this fade..." class="w-full p-3 border rounded-xl mt-1">
+       </div>
+       <div><label class="text-sm font-semibold text-gray-700">⭐ Rate Today</label>
+        <div id="js-stars" class="flex gap-1 mt-2"><button type="button" class="js-star text-3xl text-gray-300" data-val="1">★</button><button type="button" class="js-star text-3xl text-gray-300" data-val="2">★</button><button type="button" class="js-star text-3xl text-gray-300" data-val="3">★</button><button type="button" class="js-star text-3xl text-gray-300" data-val="4">★</button><button type="button" class="js-star text-3xl text-gray-300" data-val="5">★</button>
+        </div>
+       </div>
+       <div><label class="text-sm font-semibold text-gray-700">❤️ Would You Come Back Here? <span class="font-normal text-gray-400">(optional)</span></label>
+        <div id="js-return-choices" class="grid grid-cols-2 gap-2 mt-2">
+         <button type="button" class="js-return-btn py-2 px-3 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700" data-val="Definitely">Definitely</button>
+         <button type="button" class="js-return-btn py-2 px-3 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700" data-val="Maybe">Maybe</button>
+         <button type="button" class="js-return-btn py-2 px-3 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700" data-val="Not Sure">Not Sure</button>
+         <button type="button" class="js-return-btn py-2 px-3 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700" data-val="Probably Not">Probably Not</button>
+        </div>
+        <div id="js-return-reason-wrap" class="hidden mt-3"><label class="text-xs text-gray-500 font-semibold" for="js-return-reason">What would bring you back?</label><input id="js-return-reason" type="text" placeholder="What would bring you back?" class="w-full p-3 border rounded-xl mt-1">
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-2xl p-6 mb-6 border border-purple-200">
+      <h3 class="font-bold text-purple-800 mb-2 text-lg">🪄 Memory Spark</h3>
+      <p class="text-sm text-gray-500 mb-4">Need inspiration? Try a prompt!</p>
+      <div id="spark-prompt" class="bg-white rounded-xl p-4 mb-4 min-h-[60px] flex items-center justify-center text-center italic text-gray-600 border border-purple-100">
+       Tap "Surprise Me" for a prompt
+      </div><button type="button" id="spark-btn" class="w-full py-3 bg-purple-600 text-white rounded-xl font-semibold hover:bg-purple-700 transition">✨ Surprise Me</button>
+      <div class="mt-3"><label class="text-xs text-gray-500 font-semibold" for="js-spark-answer">Your answer (optional)</label><input id="js-spark-answer" type="text" placeholder="Write your response..." class="w-full p-3 border rounded-xl mt-1">
+      </div>
+     </div><button type="button" id="js-save-btn" data-template-id="journal-save-btn" class="canva-button w-full py-4 rounded-2xl font-semibold text-white text-lg shadow-md mb-4" style="background: rgb(45, 106, 79); color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 16px;">Save Today's Story ✨</button>
+     <div id="js-status" class="text-center text-sm hidden mb-4"></div>
+    </div>
+    <div id="journal-book-view" class="hidden">
+     <button type="button" id="book-back-btn" class="mb-4 text-emerald-700 font-medium flex items-center gap-1">← Back to Memories</button>
+     <div class="text-center mb-8">
+      <h3 data-template-id="journal-book-title" class="canva-text font-bold mb-2" style="color: rgb(27, 67, 50); font-weight: 700; font-style: normal; font-size: 19px;">📖 Create My Trip Book</h3>
+      <p data-template-id="journal-book-desc" class="canva-text text-gray-600 text-sm" style="color: rgb(107, 114, 128); font-weight: 400; font-style: normal; font-size: 14px;">Your stories become a beautiful keepsake your family will treasure for years.</p>
+     </div>
+     <div id="book-summary" class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 mb-6">
+      <h4 class="font-bold text-gray-800 mb-4">📖 Your Trip Book Will Include:</h4>
+      <div class="space-y-2 text-sm text-gray-700" id="book-contents"></div>
+     </div>
+     <div class="bg-gradient-to-br from-rose-50 to-pink-50 rounded-2xl p-6 border border-rose-200 mb-6">
+      <h4 class="font-bold text-rose-800 mb-4 text-lg">🌟 Final Reflection</h4>
+      <p class="text-sm text-gray-500 mb-4">Complete this at the end of your trip.</p>
+      <div class="space-y-3">
+       <div><label class="text-xs font-semibold text-gray-600" for="jr-place">Favorite Place</label><input id="jr-place" type="text" placeholder="The place that stole our hearts" class="w-full p-3 border rounded-xl mt-1">
+       </div>
+       <div><label class="text-xs font-semibold text-gray-600" for="jr-meal">Favorite Meal</label><input id="jr-meal" type="text" placeholder="The meal we still talk about" class="w-full p-3 border rounded-xl mt-1">
+       </div>
+       <div><label class="text-xs font-semibold text-gray-600" for="jr-park">Favorite National Park</label><input id="jr-park" type="text" placeholder="Our favorite park" class="w-full p-3 border rounded-xl mt-1">
+       </div>
+       <div><label class="text-xs font-semibold text-gray-600" for="jr-state-park">Favorite State Park</label><input id="jr-state-park" type="text" placeholder="Best state park" class="w-full p-3 border rounded-xl mt-1">
+       </div>
+       <div><label class="text-xs font-semibold text-gray-600" for="jr-capitol">Favorite Capitol</label><input id="jr-capitol" type="text" placeholder="Most impressive capitol" class="w-full p-3 border rounded-xl mt-1">
+       </div>
+       <div><label class="text-xs font-semibold text-gray-600" for="jr-drive">Favorite Scenic Drive</label><input id="jr-drive" type="text" placeholder="The drive we'd do again" class="w-full p-3 border rounded-xl mt-1">
+       </div>
+       <div><label class="text-xs font-semibold text-gray-600" for="jr-wildlife">Favorite Wildlife</label><input id="jr-wildlife" type="text" placeholder="Best animal sighting" class="w-full p-3 border rounded-xl mt-1">
+       </div>
+       <div><label class="text-xs font-semibold text-gray-600" for="jr-market">Favorite Farmers Market</label><input id="jr-market" type="text" placeholder="Best market find" class="w-full p-3 border rounded-xl mt-1">
+       </div>
+       <div><label class="text-xs font-semibold text-gray-600" for="jr-gem">Favorite Hidden Gem</label><input id="jr-gem" type="text" placeholder="That place nobody told us about" class="w-full p-3 border rounded-xl mt-1">
+       </div>
+       <div><label class="text-xs font-semibold text-gray-600" for="jr-tip">Best Travel Tip</label><input id="jr-tip" type="text" placeholder="Our #1 tip for next time" class="w-full p-3 border rounded-xl mt-1">
+       </div>
+       <div><label class="text-xs font-semibold text-gray-600" for="jr-next">Where We Want To Go Next</label><input id="jr-next" type="text" placeholder="Our next adventure..." class="w-full p-3 border rounded-xl mt-1">
+       </div>
+      </div><button type="button" id="jr-save-btn" class="w-full py-3 bg-rose-600 text-white rounded-xl font-semibold hover:bg-rose-700 transition mt-4">Save Final Reflection</button>
+      <div id="jr-status" class="text-center text-sm hidden mt-2"></div>
+     </div>
+    </div>
+   </div>
+   <!-- TRAVEL TOOLBOX -->
+   <div class="section" id="section-toolbox">
+    <div class="text-center mb-6">
+     <h2 data-template-id="toolbox-heading" class="canva-text font-bold mb-2" style="color: rgb(27, 67, 50); font-weight: 700; font-style: normal; font-size: 24px;">Travel Toolbox</h2>
+     <p data-template-id="toolbox-subtitle" class="canva-text text-gray-600" style="color: rgb(107, 114, 128); font-weight: 400; font-style: normal; font-size: 16px;">Everything you need for a smoother, safer, and less stressful adventure.</p>
+    </div>
+    <div class="toolbox-card bg-white shadow-sm mb-4" id="tc-emergency">
+     <div class="toolbox-card-header bg-gradient-to-r from-red-50 to-orange-50" onclick="toggleToolboxCard('tc-emergency')">
+      <h3 class="font-bold text-red-800 text-lg">🚨 Emergency Ready</h3><span class="toolbox-chevron text-gray-400 text-xl">▼</span>
+     </div>
+     <div class="toolbox-card-body">
+      <div class="p-5 space-y-6">
+       <div class="border-b pb-4">
+        <h4 class="font-semibold text-gray-800 mb-3">👤 Emergency Contacts</h4>
+        <div class="space-y-3">
+         <input id="em-primary-name" type="text" placeholder="Primary Contact Name" class="w-full p-3 border rounded-xl">
+         <div class="grid grid-cols-2 gap-3">
+          <input id="em-primary-rel" type="text" placeholder="Relationship" class="p-3 border rounded-xl"> <input id="em-primary-phone" type="tel" placeholder="Phone Number" class="p-3 border rounded-xl">
+         </div><input id="em-secondary-name" type="text" placeholder="Secondary Contact Name" class="w-full p-3 border rounded-xl">
+         <div class="grid grid-cols-2 gap-3">
+          <input id="em-secondary-rel" type="text" placeholder="Relationship" class="p-3 border rounded-xl"> <input id="em-secondary-phone" type="tel" placeholder="Phone Number" class="p-3 border rounded-xl">
+         </div><input id="em-doctor" type="text" placeholder="Family Doctor (optional)" class="w-full p-3 border rounded-xl"> <input id="em-vet" type="text" placeholder="Veterinarian (optional)" class="w-full p-3 border rounded-xl"> <input id="em-insurance" type="text" placeholder="Medical Insurance" class="w-full p-3 border rounded-xl">
+        </div>
+       </div>
+       <div class="border-b pb-4">
+        <h4 class="font-semibold text-gray-800 mb-3">🚗 Roadside Assistance</h4>
+        <div class="space-y-3">
+         <select id="em-roadside-provider" class="w-full p-3 border rounded-xl"><option value="">Select Provider</option><option>AAA</option><option>Good Sam</option><option>Coach-Net</option><option>Other</option></select> <input id="em-roadside-member" type="text" placeholder="Membership Number" class="w-full p-3 border rounded-xl">
+         <div class="grid grid-cols-2 gap-3">
+          <input id="em-roadside-phone" type="tel" placeholder="Phone Number" class="p-3 border rounded-xl"> <input id="em-roadside-exp" type="text" placeholder="Expiration Date" class="p-3 border rounded-xl">
+         </div>
+        </div>
+       </div>
+       <div class="border-b pb-4">
+        <h4 class="font-semibold text-gray-800 mb-3">🛡️ Insurance</h4>
+        <div class="space-y-3">
+         <input id="em-ins-company" type="text" placeholder="Insurance Company" class="w-full p-3 border rounded-xl">
+         <div class="grid grid-cols-2 gap-3">
+          <input id="em-ins-policy" type="text" placeholder="Policy Number" class="p-3 border rounded-xl"> <input id="em-ins-phone" type="tel" placeholder="Claims Phone" class="p-3 border rounded-xl">
+         </div>
+        </div>
+       </div>
+       <div class="border-b pb-4">
+        <h4 class="font-semibold text-gray-800 mb-3">🚙 Vehicle Information</h4>
+        <div class="space-y-3">
+         <div class="grid grid-cols-2 gap-3">
+          <input id="em-veh-make" type="text" placeholder="Make" class="p-3 border rounded-xl"> <input id="em-veh-model" type="text" placeholder="Model" class="p-3 border rounded-xl">
+         </div>
+         <div class="grid grid-cols-2 gap-3">
+          <input id="em-veh-year" type="text" placeholder="Year" class="p-3 border rounded-xl"> <input id="em-veh-plate" type="text" placeholder="License Plate" class="p-3 border rounded-xl">
+         </div><input id="em-veh-vin" type="text" placeholder="VIN (optional)" class="w-full p-3 border rounded-xl">
+         <div class="grid grid-cols-2 gap-3">
+          <input id="em-veh-fuel" type="text" placeholder="Fuel Type" class="p-3 border rounded-xl"> <input id="em-veh-tire" type="text" placeholder="Tire Size (optional)" class="p-3 border rounded-xl">
+         </div>
+        </div>
+       </div>
+       <div class="border-b pb-4">
+        <h4 class="font-semibold text-gray-800 mb-3">🏕️ Trailer Information</h4>
+        <div class="space-y-3">
+         <div class="grid grid-cols-2 gap-3">
+          <input id="em-tr-make" type="text" placeholder="Trailer Make" class="p-3 border rounded-xl"> <input id="em-tr-model" type="text" placeholder="Trailer Model" class="p-3 border rounded-xl">
+         </div>
+         <div class="grid grid-cols-2 gap-3">
+          <input id="em-tr-plate" type="text" placeholder="License Plate" class="p-3 border rounded-xl"> <input id="em-tr-vin" type="text" placeholder="VIN" class="p-3 border rounded-xl">
+         </div><input id="em-tr-insurance" type="text" placeholder="Trailer Insurance" class="w-full p-3 border rounded-xl">
+        </div>
+       </div>
+       <div class="border-b pb-4">
+        <h4 class="font-semibold text-gray-800 mb-3">🎫 Membership Cards</h4>
+        <div class="space-y-3">
+         <input id="em-park-pass" type="text" placeholder="National Park Pass / America the Beautiful" class="w-full p-3 border rounded-xl"> <input id="em-koa" type="text" placeholder="KOA Rewards" class="w-full p-3 border rounded-xl"> <input id="em-harvest" type="text" placeholder="Harvest Hosts" class="w-full p-3 border rounded-xl"> <input id="em-thousand" type="text" placeholder="Thousand Trails" class="w-full p-3 border rounded-xl"> <input id="em-other-camp" type="text" placeholder="Other Camping Memberships" class="w-full p-3 border rounded-xl">
+        </div>
+       </div> <button type="button" id="em-save-btn" data-template-id="toolbox-save-btn" class="canva-button w-full py-3 rounded-xl font-semibold text-white" style="background: rgb(45, 106, 79); color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 16px;">Save Emergency Info</button>
+       <div id="em-status" class="text-center text-sm hidden mt-2"></div>
+      </div>
+     </div>
+    </div>
+    <div class="toolbox-card bg-white shadow-sm mb-4" id="tc-before">
+     <div class="toolbox-card-header bg-gradient-to-r from-blue-50 to-cyan-50" onclick="toggleToolboxCard('tc-before')">
+      <h3 class="font-bold text-blue-800 text-lg">🚗 Before You Leave</h3><span class="toolbox-chevron text-gray-400 text-xl">▼</span>
+     </div>
+     <div class="toolbox-card-body">
+      <div class="p-5 space-y-4">
+       <div class="toolbox-card border mb-3" id="tc-vehicle-check">
+        <div class="toolbox-card-header bg-blue-50/50" onclick="toggleToolboxCard('tc-vehicle-check')">
+         <h4 class="font-semibold text-gray-800">🚗 Vehicle Checklist</h4><span class="toolbox-chevron text-gray-400">▼</span>
+        </div>
+        <div class="toolbox-card-body">
+         <div class="p-4" id="checklist-vehicle"></div>
+        </div>
+       </div>
+       <div class="toolbox-card border mb-3" id="tc-rv-check">
+        <div class="toolbox-card-header bg-blue-50/50" onclick="toggleToolboxCard('tc-rv-check')">
+         <h4 class="font-semibold text-gray-800">🚐 RV / Camper Checklist</h4><span class="toolbox-chevron text-gray-400">▼</span>
+        </div>
+        <div class="toolbox-card-body">
+         <div class="p-4" id="checklist-rv"></div>
+        </div>
+       </div>
+       <div class="toolbox-card border mb-3" id="tc-comfort-check">
+        <div class="toolbox-card-header bg-blue-50/50" onclick="toggleToolboxCard('tc-comfort-check')">
+         <h4 class="font-semibold text-gray-800">🧳 Travel Comfort Checklist</h4><span class="toolbox-chevron text-gray-400">▼</span>
+        </div>
+        <div class="toolbox-card-body">
+         <div class="p-4" id="checklist-comfort"></div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="toolbox-card bg-white shadow-sm mb-4" id="tc-toolkit">
+     <div class="toolbox-card-header bg-gradient-to-r from-amber-50 to-yellow-50" onclick="toggleToolboxCard('tc-toolkit')">
+      <h3 class="font-bold text-amber-800 text-lg">🧰 Tool Kit</h3><span class="toolbox-chevron text-gray-400 text-xl">▼</span>
+     </div>
+     <div class="toolbox-card-body">
+      <div class="p-5" id="checklist-toolkit"></div>
+     </div>
+    </div>
+    <div class="toolbox-card bg-white shadow-sm mb-4" id="tc-quickfind">
+     <div class="toolbox-card-header bg-gradient-to-r from-emerald-50 to-green-50" onclick="toggleToolboxCard('tc-quickfind')">
+      <h3 class="font-bold text-emerald-800 text-lg">⛽ Quick Find</h3><span class="toolbox-chevron text-gray-400 text-xl">▼</span>
+     </div>
+     <div class="toolbox-card-body">
+      <div class="p-5">
+       <div class="grid grid-cols-2 sm:grid-cols-3 gap-3" id="quick-find-grid"></div>
+      </div>
+     </div>
+    </div>
+    <div class="toolbox-card bg-white shadow-sm mb-4" id="tc-conditions">
+     <div class="toolbox-card-header bg-gradient-to-r from-indigo-50 to-violet-50" onclick="toggleToolboxCard('tc-conditions')">
+      <h3 class="font-bold text-indigo-800 text-lg">🌦 Travel Conditions</h3><span class="toolbox-chevron text-gray-400 text-xl">▼</span>
+     </div>
+     <div class="toolbox-card-body">
+      <div class="p-5">
+       <div class="grid grid-cols-2 gap-3" id="conditions-grid"></div>
+      </div>
+     </div>
+    </div>
+    <div class="toolbox-card bg-white shadow-sm mb-4" id="tc-tips">
+     <div class="toolbox-card-header bg-gradient-to-r from-rose-50 to-pink-50" onclick="toggleToolboxCard('tc-tips')">
+      <h3 class="font-bold text-rose-800 text-lg">❤️ Wise Family Living Tips</h3><span class="toolbox-chevron text-gray-400 text-xl">▼</span>
+     </div>
+     <div class="toolbox-card-body">
+      <div class="p-5 space-y-3" id="tips-list"></div>
+     </div>
+    </div>
+   </div>
+   <!-- LOCAL (single section for the "Local" nav tab; formerly duplicated with an empty "Resources" stub that shared the same id and made this content unreachable) -->
+   <div class="section" id="section-resources">
+    <div class="text-center mb-10">
+     <h2 data-template-id="local-wisdom-title" class="canva-text font-bold mb-2 tracking-tight" style="color: rgb(27, 67, 50); font-weight: 700; font-style: normal; font-size: 24px;">Local</h2>
+     <p data-template-id="local-wisdom-subtitle" class="canva-text text-gray-600 mb-3" style="color: rgb(27, 67, 50); font-weight: 600; font-style: normal; font-size: 18px;">Travel like you have friends in every town.</p>
+     <p data-template-id="local-wisdom-intro" class="canva-text text-sm text-gray-500 leading-relaxed max-w-md mx-auto" style="color: rgb(107, 114, 128); font-weight: 400; font-style: normal; font-size: 14px;">The best travel advice often comes from visitor centers, park rangers, campground hosts, and locals who know the area well.</p>
+    </div>
+    <div class="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-6 mb-8 border-l-4 border-emerald-500 shadow-sm">
+     <h3 class="font-bold text-emerald-900 mb-4 text-lg tracking-tight">🎯 Start Here</h3>
+     <div class="bg-white rounded-xl p-5 mb-4 border border-emerald-100 shadow-sm">
+      <h4 class="font-semibold text-gray-900 mb-2">Stop at the Visitor Center First</h4>
+      <p class="text-sm text-gray-700 mb-4 leading-relaxed">Think of it as making a friend the moment you arrive. In just a few minutes, a local expert can point you toward hidden gems, family-friendly stops, current road conditions, and the small details that never quite make it into an app.</p>
+      <div class="flex flex-col gap-2"><button type="button" class="py-2.5 px-4 bg-emerald-600 text-white rounded-lg text-sm font-medium hover:bg-emerald-700 hover:shadow-md transition-all">Find Visitor Center</button> <button type="button" class="py-2.5 px-4 border-2 border-emerald-300 text-emerald-700 rounded-lg text-sm font-medium hover:bg-emerald-50 hover:border-emerald-400 transition-all">Save Local Tip</button> <button type="button" class="py-2.5 px-4 border-2 border-emerald-300 text-emerald-700 rounded-lg text-sm font-medium hover:bg-emerald-50 hover:border-emerald-400 transition-all">Add Recommendation</button>
+      </div>
+     </div>
+    </div>
+    <div class="bg-white rounded-2xl p-6 mb-8 shadow-sm border border-gray-100">
+     <h3 class="font-bold text-gray-900 mb-4 text-lg tracking-tight">💬 Questions to Ask a Local</h3>
+     <p class="text-sm text-gray-600 mb-4 leading-relaxed">Ask visitor center staff, campground hosts, park rangers, hotel staff, or locals these questions — they're conversation starters, not a checklist.</p>
+     <div class="grid grid-cols-1 gap-2.5" id="local-questions"></div>
+    </div>
+    <div class="bg-white rounded-2xl p-6 mb-8 shadow-sm border border-gray-100">
+     <h3 class="font-bold text-gray-900 mb-4 text-lg tracking-tight">⭐ Local Tips</h3>
+     <div id="tips-form-wrapper" class="hidden mb-6 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl p-5 border border-amber-200">
+      <h4 class="font-semibold text-gray-900 mb-4">Save a Local Tip</h4>
+      <form id="save-tip-form" class="space-y-3">
+       <div class="grid grid-cols-2 gap-3">
+        <div><label class="text-xs font-semibold text-gray-600 block mb-1">Tip Type</label> <select id="tf-type" class="w-full p-2 border rounded-lg text-sm"><option value="">Select</option><option>Restaurant</option><option>Farmers Market</option><option>Hidden Gem</option><option>Scenic Drive</option><option>Parking Tip</option><option>Transportation Tip</option><option>Local Event</option><option>Free Activity</option><option>Family Activity</option><option>Weather Tip</option><option>Road Condition</option><option>Other</option></select>
+        </div>
+        <div><label class="text-xs font-semibold text-gray-600 block mb-1">Recommended By</label> <select id="tf-recommended" class="w-full p-2 border rounded-lg text-sm"><option value="">Select</option><option>Visitor Center</option><option>Park Ranger</option><option>Campground Host</option><option>Hotel Staff</option><option>Local Resident</option><option>Friend</option><option>Other</option></select>
+        </div>
+       </div><input id="tf-place" type="text" placeholder="Place Name" class="w-full p-2 border rounded-lg text-sm"> <input id="tf-address" type="text" placeholder="Address" class="w-full p-2 border rounded-lg text-sm">
+       <div class="grid grid-cols-2 gap-3"><input id="tf-phone" type="tel" placeholder="Phone" class="p-2 border rounded-lg text-sm"> <input id="tf-website" type="url" placeholder="Website" class="p-2 border rounded-lg text-sm">
+       </div><textarea id="tf-notes" placeholder="Notes" rows="2" class="w-full p-2 border rounded-lg text-sm"></textarea>
+       <div><label class="text-xs font-semibold text-gray-600 block mb-2">Would You Recommend?</label>
+        <div class="flex gap-2"><button type="button" class="flex-1 py-2 px-3 bg-green-100 text-green-700 rounded-lg text-sm font-medium border border-green-300" onclick="setRecommend('yes')">👍 Yes</button> <button type="button" class="flex-1 py-2 px-3 bg-gray-100 text-gray-600 rounded-lg text-sm font-medium border border-gray-300" onclick="setRecommend('maybe')">🤷 Maybe</button> <button type="button" class="flex-1 py-2 px-3 bg-red-100 text-red-700 rounded-lg text-sm font-medium border border-red-300" onclick="setRecommend('no')">👎 No</button>
+        </div><input id="tf-recommend" type="hidden" value="">
+       </div>
+       <div class="flex gap-2"><button type="submit" class="flex-1 py-2 bg-amber-600 text-white rounded-lg text-sm font-semibold hover:bg-amber-700 transition">Save Tip</button> <button type="button" onclick="closeTipsForm()" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-300 transition">Cancel</button>
+       </div>
+      </form>
+      <div id="save-tip-status" class="mt-2 text-center text-sm hidden"></div>
+     </div><button type="button" id="add-tip-btn" onclick="openTipsForm()" class="w-full py-3 border-2 border-dashed border-amber-300 rounded-xl text-amber-700 font-semibold hover:bg-amber-50 hover:border-amber-400 transition-all mb-4">+ Add a Tip</button>
+     <div id="saved-tips" class="space-y-3"></div>
+    </div>
+    <div class="bg-white rounded-2xl p-6 mb-8 shadow-sm border border-gray-100">
+     <h3 class="font-bold text-gray-900 mb-4 text-lg tracking-tight">🔗 Trusted Official Resources</h3>
+     <div id="official-resources" class="space-y-3"></div>
+    </div>
+    <div class="bg-white rounded-2xl p-6 mb-8 shadow-sm border border-gray-100">
+     <h3 class="font-bold text-gray-900 mb-4 text-lg tracking-tight">🚗 Getting Around</h3>
+     <div id="transport-form-wrapper" class="hidden mb-6 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-5 border border-blue-200">
+      <h4 class="font-semibold text-gray-900 mb-4">Save Transportation Info</h4>
+      <form id="save-transport-form" class="space-y-3"><select id="tr-name" class="w-full p-2 border rounded-lg text-sm"><option value="">Select Type</option><option>Uber</option><option>Lyft</option><option>Taxi</option><option>Local Shuttle</option><option>Public Transportation</option><option>Free Trolley</option><option>Bike Rentals</option><option>Parking Tips</option><option>Airport Transportation</option><option>Ferry Information</option></select> <input id="tr-available" type="text" placeholder="Available? (Yes/No/Limited)" class="w-full p-2 border rounded-lg text-sm">
+       <div class="grid grid-cols-2 gap-3"><input id="tr-phone" type="tel" placeholder="Phone" class="p-2 border rounded-lg text-sm"> <input id="tr-website" type="url" placeholder="Website" class="p-2 border rounded-lg text-sm">
+       </div><input id="tr-cost" type="text" placeholder="Cost Notes" class="w-full p-2 border rounded-lg text-sm"> <input id="tr-hours" type="text" placeholder="Hours" class="w-full p-2 border rounded-lg text-sm"> <textarea id="tr-tip" placeholder="Best Tip" rows="2" class="w-full p-2 border rounded-lg text-sm"></textarea>
+       <div class="flex gap-2"><button type="submit" class="flex-1 py-2 bg-blue-600 text-white rounded-lg text-sm font-semibold hover:bg-blue-700 transition">Save</button> <button type="button" onclick="closeTransportForm()" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-300 transition">Cancel</button>
+       </div>
+      </form>
+      <div id="save-transport-status" class="mt-2 text-center text-sm hidden"></div>
+     </div><button type="button" id="add-transport-btn" onclick="openTransportForm()" class="w-full py-3 border-2 border-dashed border-blue-300 rounded-xl text-blue-700 font-semibold hover:bg-blue-50 hover:border-blue-400 transition-all mb-4">+ Add Transportation Info</button>
+     <div id="saved-transport" class="space-y-3"></div>
+    </div>
+    <div class="bg-white rounded-2xl p-6 mb-8 shadow-sm border border-gray-100">
+     <h3 class="font-bold text-gray-900 mb-4 text-lg tracking-tight">🍽️ Local Finds</h3>
+     <div id="food-form-wrapper" class="hidden mb-6 bg-gradient-to-br from-rose-50 to-pink-50 rounded-xl p-5 border border-rose-200">
+      <h4 class="font-semibold text-gray-900 mb-4">Save Food Recommendation</h4>
+      <form id="save-food-form" class="space-y-3"><select id="fo-type" class="w-full p-2 border rounded-lg text-sm"><option value="">Select Type</option><option>Local Restaurant</option><option>Farmers Market</option><option>Coffee Shop</option><option>Ice Cream</option><option>Bakery</option><option>Food Truck</option><option>Regional Food</option><option>Family-Owned</option></select> <input id="fo-place" type="text" placeholder="Place Name" class="w-full p-2 border rounded-lg text-sm"> <input id="fo-address" type="text" placeholder="Address" class="w-full p-2 border rounded-lg text-sm"> <input id="fo-recommended" type="text" placeholder="Recommended By" class="w-full p-2 border rounded-lg text-sm"> <input id="fo-tried" type="text" placeholder="What We Tried" class="w-full p-2 border rounded-lg text-sm"> <textarea id="fo-notes" placeholder="Notes" rows="2" class="w-full p-2 border rounded-lg text-sm"></textarea>
+       <div><label class="text-xs font-semibold text-gray-600 block mb-2">Would Eat Here Again?</label>
+        <div class="flex gap-2"><button type="button" class="flex-1 py-2 px-3 bg-green-100 text-green-700 rounded-lg text-sm font-medium border border-green-300" onclick="setEatAgain('yes')">Yes</button> <button type="button" class="flex-1 py-2 px-3 bg-gray-100 text-gray-600 rounded-lg text-sm font-medium border border-gray-300" onclick="setEatAgain('maybe')">Maybe</button> <button type="button" class="flex-1 py-2 px-3 bg-red-100 text-red-700 rounded-lg text-sm font-medium border border-red-300" onclick="setEatAgain('no')">No</button>
+        </div><input id="fo-eat-again" type="hidden" value="">
+       </div>
+       <div class="flex gap-2"><button type="submit" class="flex-1 py-2 bg-rose-600 text-white rounded-lg text-sm font-semibold hover:bg-rose-700 transition">Save</button> <button type="button" onclick="closeFoodForm()" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-300 transition">Cancel</button>
+       </div>
+      </form>
+      <div id="save-food-status" class="mt-2 text-center text-sm hidden"></div>
+     </div><button type="button" id="add-food-btn" onclick="openFoodForm()" class="w-full py-3 border-2 border-dashed border-rose-300 rounded-xl text-rose-700 font-semibold hover:bg-rose-50 hover:border-rose-400 transition-all mb-4">+ Add Food Recommendation</button>
+     <div id="saved-food" class="space-y-3"></div>
+    </div>
+    <div class="bg-white rounded-2xl p-6 mb-8 shadow-sm border border-gray-100">
+     <h3 class="font-bold text-gray-900 mb-4 text-lg tracking-tight">🧡 From Our Travels</h3>
+     <div id="wisdom-tips" class="space-y-3"></div>
+    </div>
+    <div class="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-2xl p-6 border-l-4 border-purple-400 shadow-sm">
+     <h3 class="font-bold text-purple-900 mb-1 text-lg tracking-tight">🧡 Wise Family Travel Favorites</h3>
+     <p class="text-sm text-gray-600 mb-4 leading-relaxed">The gear and travel items our own family has used, trusted, and would pack again. For each one, we'll share why we bought it, the problem it solved, and who it's really best for — like advice from a friend, never a sales pitch.</p>
+     <div class="bg-white/70 rounded-xl p-4 mb-4 border border-purple-200">
+      <p class="text-xs font-semibold text-purple-700 mb-2 uppercase tracking-wide">A preview of what's coming</p>
+      <h4 class="font-semibold text-gray-900 mb-2">A Collapsible Water Container</h4>
+      <p class="text-sm text-gray-700 leading-relaxed"><span class="font-medium text-gray-900">Why we bought it:</span> we kept running low on water halfway through a day of hiking and exploring.</p>
+      <p class="text-sm text-gray-700 leading-relaxed mt-1"><span class="font-medium text-gray-900">What it solved:</span> extra water on hand without giving up permanent storage space in the vehicle.</p>
+      <p class="text-sm text-gray-700 leading-relaxed mt-1"><span class="font-medium text-gray-900">Would we buy it again?</span> Yes — it's one of our most-used items.</p>
+      <p class="text-sm text-gray-700 leading-relaxed mt-1"><span class="font-medium text-gray-900">Best for:</span> families who hike, camp, or explore off the beaten path.</p>
+     </div>
+     <div class="flex flex-wrap gap-2 mb-4">
+      <span class="inline-block px-3 py-1 bg-white/70 text-purple-800 text-xs font-medium rounded-full border border-purple-200">Road Trip Essentials</span>
+      <span class="inline-block px-3 py-1 bg-white/70 text-purple-800 text-xs font-medium rounded-full border border-purple-200">Camping &amp; RV Gear</span>
+      <span class="inline-block px-3 py-1 bg-white/70 text-purple-800 text-xs font-medium rounded-full border border-purple-200">National Park Gear</span>
+      <span class="inline-block px-3 py-1 bg-white/70 text-purple-800 text-xs font-medium rounded-full border border-purple-200">Family Travel Items</span>
+      <span class="inline-block px-3 py-1 bg-white/70 text-purple-800 text-xs font-medium rounded-full border border-purple-200">Kids' Travel Activities</span>
+      <span class="inline-block px-3 py-1 bg-white/70 text-purple-800 text-xs font-medium rounded-full border border-purple-200">Pet Travel Gear</span>
+      <span class="inline-block px-3 py-1 bg-white/70 text-purple-800 text-xs font-medium rounded-full border border-purple-200">Photography &amp; Adventure Gear</span>
+      <span class="inline-block px-3 py-1 bg-white/70 text-purple-800 text-xs font-medium rounded-full border border-purple-200">Safety &amp; Emergency Items</span>
+     </div><button type="button" class="w-full py-3 bg-purple-600 text-white rounded-xl font-semibold hover:bg-purple-700 hover:shadow-md transition-all">Explore Our Favorites</button>
+    </div>
+   </div>
+  </main>
+  <footer class="text-center py-6 mt-8 border-t">
+   <p data-template-id="footer-text" class="canva-text text-sm" style="color: rgb(107, 114, 128); font-weight: 400; font-style: normal; font-size: 16px;">Wise Family Living • Road Trip Explorer</p>
+  </footer>
+  <script src="/_sdk/b7bbbe551ba4f8f5.editing_sdk.js" integrity="sha512-h06pMz6KcVo4Wjvoggb4sS5DZpb55bTriAzBmA0YwbkBA3z2ZXl8CBEbCWT+/fAsm0SwDejJ7jJHOZsLZKqPoQ=="></script>
+  <script src="/_sdk/e3937a0574eb2d69.data_sdk.js" integrity="sha512-xbp/ACqEQy1aDxYMtXTrR3y5MUbzxuggRR/9sD48Gl4VhLMMCiAHsxMaFV6DTdeBpR6ymF+t2zhPKYkWM3+Jfw=="></script>
+  <script>
+(function() {
+  var allData = [];
+  var tripSetup = null;
+  var jsRating = 0;
+  var jsReturnValue = '';
+
+  // ---- Journal photo categories: each category holds an array of {id, src} photos,
+  // plus an explicitly user-chosen cover photo id (never auto-picked). ----
+  var journalPhotoCategories = ['view', 'landmark', 'family', 'nature', 'food', 'funny', 'gem', 'memory'];
+  var journalPhotos = {};
+  var journalPhotoCover = {};
+  var journalPhotoIdCounter = 1;
+  journalPhotoCategories.forEach(function(c) { journalPhotos[c] = []; journalPhotoCover[c] = null; });
+  var journalGalleryOpenCategory = null;
+
+  function renderPhotoSlot(category) {
+    var slot = document.querySelector('.journal-photo-slot[data-category="' + category + '"]');
+    if (!slot) return;
+    var photos = journalPhotos[category] || [];
+    var cover = slot.querySelector('.journal-photo-cover');
+    var badge = slot.querySelector('.journal-photo-badge');
+    var coverPhoto = photos.find(function(p) { return p.id === journalPhotoCover[category]; });
+    if (coverPhoto) {
+      slot.classList.add('has-photos');
+      cover.innerHTML = '<img class="journal-photo-cover-img" src="' + coverPhoto.src + '" alt="' + slot.dataset.label + ' cover photo">';
+    } else {
+      slot.classList.remove('has-photos');
+      cover.innerHTML = '<span class="text-2xl block mb-1">' + slot.dataset.emoji + '</span>';
+    }
+    if (photos.length) {
+      badge.textContent = '📷 ' + photos.length;
+      badge.classList.remove('hidden');
+    } else {
+      badge.classList.add('hidden');
+    }
+  }
+  function renderAllPhotoSlots() { journalPhotoCategories.forEach(renderPhotoSlot); }
+
+  function renderGalleryGrid() {
+    var category = journalGalleryOpenCategory;
+    var photos = journalPhotos[category] || [];
+    var grid = document.getElementById('journal-gallery-grid');
+    var empty = document.getElementById('journal-gallery-empty');
+    var hint = document.getElementById('journal-gallery-hint');
+    if (!photos.length) { grid.innerHTML = ''; empty.classList.remove('hidden'); hint.classList.add('hidden'); return; }
+    empty.classList.add('hidden');
+    hint.classList.toggle('hidden', photos.length < 1);
+    grid.innerHTML = photos.map(function(photo, i) {
+      var isCover = journalPhotoCover[category] === photo.id;
+      var leftBtn = i > 0 ? '<span class="journal-gallery-move journal-gallery-move-left" onclick="event.stopPropagation(); movePhoto(\'' + category + '\', ' + i + ', -1)">◀</span>' : '';
+      var rightBtn = i < photos.length - 1 ? '<span class="journal-gallery-move journal-gallery-move-right" onclick="event.stopPropagation(); movePhoto(\'' + category + '\', ' + i + ', 1)">▶</span>' : '';
+      var coverLabel = isCover ? '<span class="journal-gallery-cover-label">★ Cover</span>' : '';
+      return '<div class="journal-gallery-thumb' + (isCover ? ' is-cover' : '') + '" onclick="setCoverPhoto(\'' + category + '\', \'' + photo.id + '\')"><img src="' + photo.src + '" alt="Photo ' + (i + 1) + '">' + coverLabel + '<span class="journal-gallery-remove" onclick="event.stopPropagation(); removePhoto(\'' + category + '\', ' + i + ')">×</span>' + leftBtn + rightBtn + '</div>';
+    }).join('');
+  }
+
+  window.openPhotoGallery = function(category) {
+    journalGalleryOpenCategory = category;
+    var slot = document.querySelector('.journal-photo-slot[data-category="' + category + '"]');
+    if (!slot) return;
+    document.getElementById('journal-gallery-emoji').textContent = slot.dataset.emoji;
+    document.getElementById('journal-gallery-title').textContent = slot.dataset.label;
+    renderGalleryGrid();
+    document.getElementById('journal-photo-gallery-modal').classList.remove('hidden');
+  };
+  window.closePhotoGallery = function() {
+    document.getElementById('journal-photo-gallery-modal').classList.add('hidden');
+    journalGalleryOpenCategory = null;
+  };
+  window.setCoverPhoto = function(category, photoId) {
+    journalPhotoCover[category] = photoId;
+    renderGalleryGrid();
+    renderPhotoSlot(category);
+  };
+  window.removePhoto = function(category, index) {
+    var removed = journalPhotos[category][index];
+    journalPhotos[category].splice(index, 1);
+    if (removed && journalPhotoCover[category] === removed.id) { journalPhotoCover[category] = null; }
+    renderGalleryGrid();
+    renderPhotoSlot(category);
+  };
+  window.movePhoto = function(category, index, dir) {
+    var arr = journalPhotos[category];
+    var newIndex = index + dir;
+    if (newIndex < 0 || newIndex >= arr.length) return;
+    var tmp = arr[index]; arr[index] = arr[newIndex]; arr[newIndex] = tmp;
+    renderGalleryGrid();
+    renderPhotoSlot(category);
+  };
+
+  function resizeImageFile(file) {
+    return new Promise(function(resolve, reject) {
+      var reader = new FileReader();
+      reader.onerror = reject;
+      reader.onload = function() {
+        var img = new Image();
+        img.onerror = reject;
+        img.onload = function() {
+          var maxDim = 1000;
+          var scale = Math.min(1, maxDim / Math.max(img.width, img.height));
+          var w = Math.round(img.width * scale) || 1;
+          var h = Math.round(img.height * scale) || 1;
+          var canvas = document.createElement('canvas');
+          canvas.width = w; canvas.height = h;
+          canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+          resolve(canvas.toDataURL('image/jpeg', 0.75));
+        };
+        img.src = reader.result;
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  document.getElementById('journal-gallery-file-input').addEventListener('change', async function(e) {
+    var files = Array.from(e.target.files || []);
+    var category = journalGalleryOpenCategory;
+    if (!category || !files.length) return;
+    for (var i = 0; i < files.length; i++) {
+      try {
+        var src = await resizeImageFile(files[i]);
+        journalPhotos[category].push({ id: 'p' + (journalPhotoIdCounter++), src: src });
+      } catch (err) { /* skip a file that failed to load */ }
+    }
+    e.target.value = '';
+    renderGalleryGrid();
+    renderPhotoSlot(category);
+  });
+
+
+  document.getElementById('journal-photo-gallery-modal').addEventListener('click', function(e) {
+    if (e.target === this) closePhotoGallery();
+  });
+  var editingStoryId = null;
+
+  // ========== FUNDS (single source of truth for the "Adventure Funds" tab) ==========
+  var fundDescriptions = {
+    lodging: 'Places where you rest or sleep during the trip, including campgrounds, hotels, motels, Airbnbs, cabins, resorts, cruises, and other overnight accommodations.',
+    food: 'Food and drinks purchased during the trip, including restaurants, fast food, grocery stores, gas stations, coffee shops, snacks, drinks, and travel meals.',
+    transport: 'Everything that helps the traveler get from place to place, including gasoline, diesel, EV charging, tolls, parking, car washes, vehicle repairs, flat tires, windshield wipers, rental cars, taxis, Uber, Lyft, buses, trains, subways, ferries, flights, airport transportation, cruise transfers, and shuttles.',
+    entertainment: 'Activities and experiences during the trip, including parks, museums, movies, tours, attractions, tickets, shows, events, and admission fees.',
+    misc: 'Travel expenses that do not clearly belong in Lodging, Food, Transportation, or Entertainment.'
+  };
+
+  var fundTips = {
+    lodging: 'Compare the total stay price, not only the nightly rate. Cleaning fees, resort fees, campground fees, and parking can change the final cost.',
+    food: 'Packing drinks, snacks, or one simple meal each day may help reduce food costs without taking away from special vacation meals.',
+    transport: 'Traveling in an RV or camper? Consider a portable electric cooler or refrigerator that plugs into your vehicle. It may reduce the need to buy bags of ice every day.',
+    entertainment: 'Check visitor centers, libraries, parks, and community calendars for free or low-cost family activities.',
+    misc: 'Leave a little room for unexpected needs such as laundry, forgotten supplies, medicine, or last-minute travel purchases.'
+  };
+
+  var currentFund = null;
+  var fundData = {};
+
+  // Single fund-selector change handler (a duplicate, simpler handler that only
+  // re-set fund-description text was removed — it fired redundantly alongside this one).
+  document.getElementById('fund-selector').addEventListener('change', function() {
+    var selectedFund = this.value;
+    currentFund = selectedFund;
+    if (selectedFund) {
+      document.getElementById('fund-description').textContent = fundDescriptions[selectedFund] || '';
+      document.getElementById('fund-details-section').classList.remove('hidden');
+      document.getElementById('calculations-section').classList.remove('hidden');
+      document.getElementById('add-money-btn').classList.remove('hidden');
+      document.getElementById('progress-scene-section').classList.remove('hidden');
+      document.getElementById('tip-section').classList.remove('hidden');
+      document.getElementById('fund-tip').textContent = fundTips[selectedFund] || '';
+      loadFundData(selectedFund);
+      updateFundCalculations(selectedFund);
+      updateProgressScene(selectedFund);
+    } else {
+      document.getElementById('fund-description').textContent = '';
+      document.getElementById('fund-details-section').classList.add('hidden');
+      document.getElementById('calculations-section').classList.add('hidden');
+      document.getElementById('add-money-btn').classList.add('hidden');
+      document.getElementById('progress-scene-section').classList.add('hidden');
+      document.getElementById('tip-section').classList.add('hidden');
+      currentFund = null;
+    }
+  });
+
+  function loadFundData(fund) {
+    if (!fundData[fund]) {
+      fundData[fund] = { goal: 0, saved: 0, tripDate: '', nextPayday: '', payFrequency: '' };
+    }
+    var data = fundData[fund];
+    document.getElementById('fund-goal').value = data.goal || '';
+    document.getElementById('fund-saved').value = data.saved || '';
+    document.getElementById('fund-trip-date').value = data.tripDate || '';
+    document.getElementById('fund-next-payday').value = data.nextPayday || '';
+    document.getElementById('fund-pay-frequency').value = data.payFrequency || '';
+  }
+
+  function saveFundData(fund) {
+    if (!fundData[fund]) fundData[fund] = {};
+    fundData[fund].goal = Number(document.getElementById('fund-goal').value) || 0;
+    fundData[fund].saved = Number(document.getElementById('fund-saved').value) || 0;
+    fundData[fund].tripDate = document.getElementById('fund-trip-date').value;
+    fundData[fund].nextPayday = document.getElementById('fund-next-payday').value;
+    fundData[fund].payFrequency = document.getElementById('fund-pay-frequency').value;
+  }
+
+  function updateFundCalculations(fund) {
+    if (!currentFund) return;
+    saveFundData(fund);
+    var data = fundData[fund];
+    var goal = Number(data.goal) || 0;
+    var saved = Number(data.saved) || 0;
+    var remaining = Math.max(0, goal - saved);
+    var percentage = goal > 0 ? Math.round((saved / goal) * 100) : 0;
+    percentage = Math.min(100, percentage);
+
+    document.getElementById('calc-saved').textContent = '$' + saved.toFixed(2);
+    document.getElementById('calc-remaining').textContent = '$' + remaining.toFixed(2);
+    document.getElementById('calc-percentage').textContent = percentage + '%';
+    document.getElementById('calc-progress-bar').style.width = percentage + '%';
+
+    if (percentage >= 100) {
+      document.getElementById('calc-remaining').textContent = '$0';
+      document.getElementById('calc-percentage').textContent = '100%';
+    }
+
+    var tripDate = data.tripDate ? new Date(data.tripDate) : null;
+    var nextPayday = data.nextPayday ? new Date(data.nextPayday) : null;
+    var payFreq = data.payFrequency;
+
+    if (!tripDate || !nextPayday || !payFreq || payFreq === 'Variable Income or Tips') {
+      if (payFreq === 'Variable Income or Tips') {
+        document.getElementById('calc-paydays').textContent = 'Add money whenever you are paid. Your progress and remaining balance will update automatically.';
+        document.getElementById('calc-per-payday').textContent = '—';
+      } else if (tripDate && nextPayday && tripDate <= nextPayday) {
+        document.getElementById('calc-paydays').textContent = 'Trip starts before next payday.';
+        document.getElementById('calc-per-payday').textContent = '—';
+      } else {
+        document.getElementById('calc-paydays').textContent = '—';
+        document.getElementById('calc-per-payday').textContent = '—';
+      }
+    } else {
+      var paydayCount = 0;
+      var currentPD = new Date(nextPayday);
+      var freqDays = { 'Weekly': 7, 'Every Two Weeks': 14, 'Twice a Month': 15, 'Monthly': 30 };
+      var daysPerPayPeriod = freqDays[payFreq] || 0;
+
+      while (currentPD <= tripDate) {
+        paydayCount++;
+        currentPD.setDate(currentPD.getDate() + daysPerPayPeriod);
+      }
+
+      var perPayday = paydayCount > 0 ? Math.ceil(remaining / paydayCount * 100) / 100 : 0;
+      document.getElementById('calc-paydays').textContent = paydayCount + ' payday(s) remaining';
+      document.getElementById('calc-per-payday').textContent = '$' + perPayday.toFixed(2);
+    }
+  }
+
+  function updateProgressScene(fund) {
+    var data = fundData[fund];
+    var goal = Number(data.goal) || 0;
+    var saved = Number(data.saved) || 0;
+    var percentage = goal > 0 ? Math.round((saved / goal) * 100) : 0;
+    percentage = Math.min(100, percentage);
+
+    var vehicle = document.getElementById('vehicle');
+    var destination = document.getElementById('destination');
+    var message = document.getElementById('progress-message');
+
+    var xPos = 50 + (percentage * 3);
+    vehicle.setAttribute('transform', 'translate(' + xPos + ', 100)');
+
+    destination.innerHTML = '';
+    var destX = 320, destY = 100;
+
+    if (fund === 'lodging') {
+      destination.innerHTML = '<rect x="' + (destX - 20) + '" y="' + (destY - 15) + '" width="40" height="30" rx="3" fill="#8b5cf6"/><rect x="' + (destX - 18) + '" y="' + (destY - 12) + '" width="8" height="10" fill="#93c5fd"/><rect x="' + (destX - 7) + '" y="' + (destY - 12) + '" width="8" height="10" fill="#93c5fd"/>';
+    } else if (fund === 'food') {
+      destination.innerHTML = '<circle cx="' + destX + '" cy="' + destY + '" r="12" fill="#fbbf24"/><circle cx="' + (destX - 6) + '" cy="' + (destY - 6) + '" r="4" fill="#dc2626"/><circle cx="' + (destX + 6) + '" cy="' + (destY - 4) + '" r="4" fill="#dc2626"/>';
+    } else if (fund === 'transport') {
+      destination.innerHTML = '<polygon points="' + destX + ',' + (destY - 12) + ' ' + (destX + 8) + ',' + destY + ' ' + destX + ',' + (destY + 8) + ' ' + (destX - 8) + ',' + destY + '" fill="#ef4444"/><text x="' + destX + '" y="' + (destY + 2) + '" text-anchor="middle" font-size="8" fill="#fff" font-weight="bold">→</text>';
+    } else if (fund === 'entertainment') {
+      destination.innerHTML = '<circle cx="' + destX + '" cy="' + destY + '" r="10" fill="#8b5cf6"/><circle cx="' + (destX - 3) + '" cy="' + (destY - 3) + '" r="2" fill="#fbbf24"/><circle cx="' + (destX + 3) + '" cy="' + (destY - 3) + '" r="2" fill="#fbbf24"/><circle cx="' + destX + '" cy="' + (destY + 4) + '" r="2" fill="#fbbf24"/>';
+    } else if (fund === 'misc') {
+      destination.innerHTML = '<rect x="' + (destX - 10) + '" y="' + (destY - 12) + '" width="20" height="24" rx="2" fill="#06b6d4"/><path d="M ' + (destX - 5) + ' ' + (destY - 10) + ' L ' + (destX + 5) + ' ' + (destY - 5) + '" stroke="#fff" stroke-width="2"/>';
+    }
+
+    var msgText = 'Your savings journey begins here.';
+    if (percentage >= 100) msgText = 'This fund is ready for the adventure!';
+    else if (percentage >= 75) msgText = 'Your goal is getting close!';
+    else if (percentage >= 50) msgText = 'Halfway to this travel goal!';
+    else if (percentage >= 25) msgText = 'You are making progress!';
+
+    message.textContent = msgText;
+  }
+
+  document.addEventListener('input', function() {
+    if (currentFund) updateFundCalculations(currentFund);
+  });
+
+  document.getElementById('add-money-btn').addEventListener('click', function() {
+    document.getElementById('add-money-form').classList.remove('hidden');
+    document.getElementById('add-money-form').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  window.closeFundForm = function() {
+    document.getElementById('add-money-form').classList.add('hidden');
+    document.getElementById('deposit-form').reset();
+  };
+
+  document.getElementById('deposit-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    if (!currentFund) return;
+    var amount = Number(document.getElementById('deposit-amount').value) || 0;
+    if (amount <= 0) {
+      showStatus('deposit-status', 'Enter a valid amount', false);
+      return;
+    }
+    saveFundData(currentFund);
+    fundData[currentFund].saved = (fundData[currentFund].saved || 0) + amount;
+    document.getElementById('fund-saved').value = fundData[currentFund].saved;
+    updateFundCalculations(currentFund);
+    updateProgressScene(currentFund);
+    closeFundForm();
+    showStatus('deposit-status', 'Deposit added!', true);
+  });
+
+  // ========== TAB SWITCHING ==========
+  document.querySelectorAll('.tab-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+      document.querySelectorAll('.section').forEach(function(s) { s.classList.remove('active'); });
+      btn.classList.add('active');
+      var section = document.getElementById('section-' + btn.dataset.tab);
+      if (section) section.classList.add('active');
+    });
+  });
+
+  // Transport toggles - each checkbox independently controls its section
+  document.querySelectorAll('[data-transport]').forEach(function(checkbox) {
+    checkbox.addEventListener('change', function(e) {
+      var transportType = this.dataset.transport;
+      var sectionMap = {
+        'driving': 'driving-details',
+        'flying': 'flying-details',
+        'rv': 'rv-details',
+        'rental': 'rental-details',
+        'train': 'train-details',
+        'cruise': 'cruise-details',
+        'bus': 'bus-details'
+      };
+      var sectionId = sectionMap[transportType];
+      if (sectionId) {
+        var section = document.getElementById(sectionId);
+        section.classList.toggle('hidden', !e.target.checked);
+      }
+    });
+  });
+
+  // State list used by Map and Journal tabs only (Learn tab has its own hardcoded <option> list in the HTML)
+  var stateList = ['Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','Florida','Georgia','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virginia','Washington','West Virginia','Wisconsin','Wyoming'];
+
+  var mapMorningState = document.getElementById('map-morning-state');
+  var mapEveningState = document.getElementById('map-evening-state');
+  var jsState = document.getElementById('js-state');
+
+  if (mapMorningState) stateList.forEach(function(s) { mapMorningState.appendChild(new Option(s, s)); });
+  if (mapEveningState) stateList.forEach(function(s) { mapEveningState.appendChild(new Option(s, s)); });
+  if (jsState) stateList.forEach(function(s) { jsState.appendChild(new Option(s, s)); });
+
+  document.getElementById('map-date').value = new Date().toISOString().split('T')[0];
+
+  // Mileage auto-calculation
+  function updateMileage() {
+    var morning = Number(document.getElementById('map-morning-odo').value);
+    var evening = Number(document.getElementById('map-evening-odo').value);
+    var todayDriven = 0;
+
+    if (!isNaN(morning) && !isNaN(evening) && evening > 0) {
+      todayDriven = Math.max(0, evening - morning);
+    }
+
+    document.getElementById('map-miles-driven').value = todayDriven;
+    recalcTotalMiles();
+  }
+
+  function recalcTotalMiles() {
+    var mapDailyMiles = Number(document.getElementById('map-miles-driven').value) || 0;
+    document.getElementById('map-total-miles').value = mapDailyMiles;
+  }
+
+  document.getElementById('map-morning-odo').addEventListener('input', updateMileage);
+  document.getElementById('map-evening-odo').addEventListener('input', updateMileage);
+
+  // ========== DATA SDK (single onDataChanged handler — replaces the earlier
+  // handler + a second "wrap and reassign" block that bolted on the Local Wisdom renders) ==========
+  var handler = {
+    onDataChanged: function(data) {
+      allData = data;
+      tripSetup = data.find(function(d) { return d.type === 'trip_setup'; }) || null;
+      if (tripSetup) populateTripForm();
+      renderJournalTimeline();
+      renderTripStops();
+      displayTripSummary();
+      loadFinalReflection();
+      loadEmergencyInfo();
+      renderLocalTips();
+      renderLocalTransport();
+      renderLocalFood();
+    }
+  };
+  if (window.dataSdk && typeof window.dataSdk.init === 'function') {
+    window.dataSdk.init(handler);
+  } else {
+    console.error('window.dataSdk is undefined - the data_sdk.js include did not load before this script ran. Rendering with no data.');
+    handler.onDataChanged([]);
+  }
+
+  function populateTripForm() {
+    if (!tripSetup) return;
+    var fields = {'f-trip-name':'trip_name','f-main-start':'main_start_location','f-main-end':'main_end_location','f-trip-start-date':'trip_start_date','f-trip-end-date':'trip_end_date','f-general-notes':'general_notes','f-driver-names':'driver_names','f-vehicle-nickname':'vehicle_nickname','f-vehicle-type':'vehicle_type','f-driving-start':'driving_start','f-driving-destination':'driving_destination','f-driving-notes':'driving_notes','f-traveler-names':'traveler_names','f-airline':'airline','f-flight-number':'flight_number','f-confirmation-code':'confirmation_code','f-departure-airport':'departure_airport','f-arrival-airport':'arrival_airport','f-departure-date':'departure_date','f-return-date':'return_date','f-ticket-cost':'ticket_cost','f-payment-method':'payment_method','f-flying-notes':'flying_notes','f-rv-type':'rv_type','f-rv-length':'rv_length','f-rv-rental-company':'rv_rental_company','f-rv-pickup-location':'rv_pickup_location','f-rv-pickup-date':'rv_pickup_date','f-rv-return-date':'rv_return_date','f-rv-notes':'rv_notes','f-rental-company':'rental_company','f-rental-pickup-location':'rental_pickup_location','f-rental-pickup-date':'rental_pickup_date','f-rental-return-date':'rental_return_date','f-rental-car-type':'rental_car_type','f-rental-confirmation':'rental_confirmation','f-rental-notes':'rental_notes','f-train-service':'train_service','f-train-route':'train_route','f-train-departure-station':'train_departure_station','f-train-arrival-station':'train_arrival_station','f-train-departure-date':'train_departure_date','f-train-confirmation':'train_confirmation','f-train-notes':'train_notes','f-cruise-line':'cruise_line','f-cruise-ship':'cruise_ship','f-cruise-departure-port':'cruise_departure_port','f-cruise-departure-date':'cruise_departure_date','f-cruise-return-date':'cruise_return_date','f-cruise-confirmation':'cruise_confirmation','f-cruise-notes':'cruise_notes','f-bus-company':'bus_company','f-bus-route':'bus_route','f-bus-departure-station':'bus_departure_station','f-bus-arrival-station':'bus_arrival_station','f-bus-departure-date':'bus_departure_date','f-bus-confirmation':'bus_confirmation','f-bus-notes':'bus_notes'};
+    for (var id in fields) { var el = document.getElementById(id); if (el && tripSetup[fields[id]]) el.value = tripSetup[fields[id]]; }
+    var roundTripEl = document.getElementById('f-round-trip');
+    if (roundTripEl) roundTripEl.checked = tripSetup.round_trip === 'yes';
+    // Restore transport checkboxes and their sections
+    var transportMap = {'check-driving':'transport_driving','check-flying':'transport_flying','check-rv':'transport_rv','check-rental':'transport_rental','check-train':'transport_train','check-cruise':'transport_cruise','check-bus':'transport_bus'};
+    for (var checkId in transportMap) {
+      var checkbox = document.getElementById(checkId);
+      var fieldName = transportMap[checkId];
+      if (checkbox && tripSetup[fieldName] === 'yes') {
+        checkbox.checked = true;
+        var event = new Event('change', { bubbles: true });
+        checkbox.dispatchEvent(event);
+      }
+    }
+  }
+
+  // Trip form
+  document.getElementById('trip-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    var record = { type: 'trip_setup', trip_name: document.getElementById('f-trip-name').value, main_start_location: document.getElementById('f-main-start').value, main_end_location: document.getElementById('f-main-end').value, trip_start_date: document.getElementById('f-trip-start-date').value, trip_end_date: document.getElementById('f-trip-end-date').value, general_notes: document.getElementById('f-general-notes').value, transport_driving: document.getElementById('check-driving').checked ? 'yes' : 'no', transport_flying: document.getElementById('check-flying').checked ? 'yes' : 'no', transport_rv: document.getElementById('check-rv').checked ? 'yes' : 'no', transport_rental: document.getElementById('check-rental').checked ? 'yes' : 'no', transport_train: document.getElementById('check-train').checked ? 'yes' : 'no', transport_cruise: document.getElementById('check-cruise').checked ? 'yes' : 'no', transport_bus: document.getElementById('check-bus').checked ? 'yes' : 'no', driver_names: document.getElementById('f-driver-names').value, vehicle_nickname: document.getElementById('f-vehicle-nickname').value, vehicle_type: document.getElementById('f-vehicle-type').value, round_trip: document.getElementById('f-round-trip').checked ? 'yes' : 'no', driving_start: document.getElementById('f-driving-start').value, driving_destination: document.getElementById('f-driving-destination').value, driving_notes: document.getElementById('f-driving-notes').value, traveler_names: document.getElementById('f-traveler-names').value, airline: document.getElementById('f-airline').value, flight_number: document.getElementById('f-flight-number').value, confirmation_code: document.getElementById('f-confirmation-code').value, departure_airport: document.getElementById('f-departure-airport').value, arrival_airport: document.getElementById('f-arrival-airport').value, departure_date: document.getElementById('f-departure-date').value, return_date: document.getElementById('f-return-date').value, ticket_cost: Number(document.getElementById('f-ticket-cost').value) || 0, payment_method: document.getElementById('f-payment-method').value, flying_notes: document.getElementById('f-flying-notes').value, rv_type: document.getElementById('f-rv-type').value, rv_length: document.getElementById('f-rv-length').value, rv_rental_company: document.getElementById('f-rv-rental-company').value, rv_pickup_location: document.getElementById('f-rv-pickup-location').value, rv_pickup_date: document.getElementById('f-rv-pickup-date').value, rv_return_date: document.getElementById('f-rv-return-date').value, rv_notes: document.getElementById('f-rv-notes').value, rental_company: document.getElementById('f-rental-company').value, rental_pickup_location: document.getElementById('f-rental-pickup-location').value, rental_pickup_date: document.getElementById('f-rental-pickup-date').value, rental_return_date: document.getElementById('f-rental-return-date').value, rental_car_type: document.getElementById('f-rental-car-type').value, rental_confirmation: document.getElementById('f-rental-confirmation').value, rental_notes: document.getElementById('f-rental-notes').value, train_service: document.getElementById('f-train-service').value, train_route: document.getElementById('f-train-route').value, train_departure_station: document.getElementById('f-train-departure-station').value, train_arrival_station: document.getElementById('f-train-arrival-station').value, train_departure_date: document.getElementById('f-train-departure-date').value, train_confirmation: document.getElementById('f-train-confirmation').value, train_notes: document.getElementById('f-train-notes').value, cruise_line: document.getElementById('f-cruise-line').value, cruise_ship: document.getElementById('f-cruise-ship').value, cruise_departure_port: document.getElementById('f-cruise-departure-port').value, cruise_departure_date: document.getElementById('f-cruise-departure-date').value, cruise_return_date: document.getElementById('f-cruise-return-date').value, cruise_confirmation: document.getElementById('f-cruise-confirmation').value, cruise_notes: document.getElementById('f-cruise-notes').value, bus_company: document.getElementById('f-bus-company').value, bus_route: document.getElementById('f-bus-route').value, bus_departure_station: document.getElementById('f-bus-departure-station').value, bus_arrival_station: document.getElementById('f-bus-arrival-station').value, bus_departure_date: document.getElementById('f-bus-departure-date').value, bus_confirmation: document.getElementById('f-bus-confirmation').value, bus_notes: document.getElementById('f-bus-notes').value };
+    var btn = document.querySelector('[data-template-id="save-trip-btn"]'); btn.disabled = true; btn.style.opacity = '0.5';
+    var result = tripSetup ? await window.dataSdk.update(Object.assign({}, tripSetup, record)) : await window.dataSdk.create(record);
+    btn.disabled = false; btn.style.opacity = '1';
+    showStatus('trip-status', result.isOk ? 'Trip saved!' : 'Error saving trip', result.isOk);
+  });
+
+  function displayTripSummary() {
+    if (!tripSetup || !tripSetup.trip_name) { document.getElementById('trip-summary').classList.add('hidden'); return; }
+    document.getElementById('summary-content').innerHTML = '<div><strong>Trip:</strong> ' + tripSetup.trip_name + '</div>' + (tripSetup.main_start_location ? '<div><strong>Route:</strong> ' + tripSetup.main_start_location + ' → ' + (tripSetup.main_end_location || '') + '</div>' : '');
+    document.getElementById('trip-summary').classList.remove('hidden');
+  }
+
+  // ========== JOURNAL ==========
+  var sparkPrompts = ["What moment made today unforgettable?","What surprised you the most today?","What made everyone laugh?","What is one thing you'll probably still be talking about next year?","What made this place feel special?","What discovery are you glad you made?","If you could relive one moment from today, which would it be?","What did you notice that nobody else seemed to?","What's the kindest thing someone did for your family today?","What sound or smell will remind you of today?","If today were a chapter in a book, what would the title be?","What would you tell your future self about today?","What was the most beautiful thing you saw?","Who did you meet that left an impression?","What food would you travel back just to eat again?","What's one thing that went differently than planned — but turned out better?","What creature (big or small) did you spot today?","What did the kids teach you today?","What tradition did your family start or continue today?","What's one photo you wish you had taken?"];
+  document.getElementById('spark-btn').addEventListener('click', function() { document.getElementById('spark-prompt').textContent = sparkPrompts[Math.floor(Math.random() * sparkPrompts.length)]; });
+  document.querySelectorAll('.js-star').forEach(function(s) { s.addEventListener('click', function() { jsRating = parseInt(s.dataset.val); document.querySelectorAll('.js-star').forEach(function(st, i) { st.style.color = i < jsRating ? '#f59e0b' : '#d1d5db'; }); }); });
+
+  document.getElementById('js-add-person-btn').addEventListener('click', function() {
+    var input = document.createElement('input');
+    input.type = 'text';
+    input.className = 'js-person-input w-full p-3 border rounded-xl';
+    input.placeholder = 'Name (family, friend, relative, or someone you met)';
+    document.getElementById('js-people-list').appendChild(input);
+  });
+
+  function setReturnChoice(val) {
+    jsReturnValue = val;
+    document.querySelectorAll('.js-return-btn').forEach(function(btn) {
+      var active = btn.dataset.val === val;
+      btn.classList.toggle('bg-emerald-600', active);
+      btn.classList.toggle('text-white', active);
+      btn.classList.toggle('border-emerald-600', active);
+      btn.classList.toggle('bg-white', !active);
+      btn.classList.toggle('text-gray-700', !active);
+      btn.classList.toggle('border-gray-300', !active);
+    });
+    var showReason = (val === 'Definitely' || val === 'Maybe');
+    document.getElementById('js-return-reason-wrap').classList.toggle('hidden', !showReason);
+  }
+  document.querySelectorAll('.js-return-btn').forEach(function(btn) { btn.addEventListener('click', function() { setReturnChoice(btn.dataset.val); }); });
+
+  document.getElementById('btn-add-story').addEventListener('click', function() {
+    editingStoryId = null; resetStoryForm();
+    document.getElementById('js-date').value = new Date().toISOString().split('T')[0];
+    if (tripSetup && tripSetup.trip_start_date) { var start = new Date(tripSetup.trip_start_date); var day = Math.max(1, Math.ceil((new Date() - start) / 86400000) + 1); document.getElementById('js-day').value = day; }
+    document.getElementById('journal-home').classList.add('hidden');
+    document.getElementById('journal-story-form').classList.remove('hidden');
+    document.getElementById('journal-book-view').classList.add('hidden');
+  });
+  document.getElementById('btn-trip-book').addEventListener('click', function() { document.getElementById('journal-home').classList.add('hidden'); document.getElementById('journal-story-form').classList.add('hidden'); document.getElementById('journal-book-view').classList.remove('hidden'); renderBookSummary(); });
+  document.getElementById('journal-back-btn').addEventListener('click', showJournalHome);
+  document.getElementById('book-back-btn').addEventListener('click', showJournalHome);
+  function showJournalHome() { document.getElementById('journal-home').classList.remove('hidden'); document.getElementById('journal-story-form').classList.add('hidden'); document.getElementById('journal-book-view').classList.add('hidden'); }
+  function resetStoryForm() { ['js-date','js-day','js-location','js-lodging','js-memory','js-laugh','js-surprise','js-learned','js-remember','js-spark-answer'].forEach(function(id) { document.getElementById(id).value = ''; }); document.getElementById('js-state').value = ''; jsRating = 0; document.querySelectorAll('.js-star').forEach(function(s) { s.style.color = '#d1d5db'; }); document.getElementById('spark-prompt').textContent = 'Tap "Surprise Me" for a prompt'; document.getElementById('js-people-list').innerHTML = '<input type="text" class="js-person-input w-full p-3 border rounded-xl" placeholder="Name (family, friend, relative, or someone you met)">'; document.getElementById('js-return-reason').value = ''; setReturnChoice(''); journalPhotoCategories.forEach(function(c) { journalPhotos[c] = []; journalPhotoCover[c] = null; }); renderAllPhotoSlots(); }
+
+  document.getElementById('js-save-btn').addEventListener('click', async function() {
+    if (allData.length >= 999) { showStatus('js-status', 'Maximum 999 records reached.', false); return; }
+    var jsPeople = Array.from(document.querySelectorAll('.js-person-input')).map(function(el) { return el.value.trim(); }).filter(Boolean).join('|');
+    var record = { type: 'journal_story', date: document.getElementById('js-date').value || new Date().toISOString().split('T')[0], journal_trip_day: Number(document.getElementById('js-day').value) || 0, journal_state: document.getElementById('js-state').value, location: document.getElementById('js-location').value, journal_lodging: document.getElementById('js-lodging').value, journal_people: jsPeople, journal_favorite_memory: document.getElementById('js-memory').value, journal_biggest_laugh: document.getElementById('js-laugh').value, journal_surprise: document.getElementById('js-surprise').value, journal_learned: document.getElementById('js-learned').value, journal_remember: document.getElementById('js-remember').value, journal_memory_spark: document.getElementById('js-spark-answer').value, rating: jsRating, journal_would_return: jsReturnValue, journal_return_reason: document.getElementById('js-return-reason').value };
+    journalPhotoCategories.forEach(function(c) { record['journal_photos_' + c] = JSON.stringify(journalPhotos[c] || []); record['journal_cover_' + c] = journalPhotoCover[c] || ''; });
+    var btn = document.getElementById('js-save-btn'); btn.disabled = true; btn.style.opacity = '0.5';
+    var result; if (editingStoryId) { var existing = allData.find(function(d) { return d.__backendId === editingStoryId; }); result = await window.dataSdk.update(Object.assign({}, existing, record)); } else { result = await window.dataSdk.create(record); }
+    btn.disabled = false; btn.style.opacity = '1';
+    if (result.isOk) showJournalHome();
+    showStatus('js-status', result.isOk ? 'Story saved! ✨' : 'Error saving', result.isOk);
+  });
+
+  function getStoryCoverPhoto(s) {
+    for (var i = 0; i < journalPhotoCategories.length; i++) {
+      var c = journalPhotoCategories[i];
+      var coverId = s['journal_cover_' + c];
+      if (!coverId) continue;
+      try {
+        var photos = JSON.parse(s['journal_photos_' + c] || '[]');
+        var match = photos.find(function(p) { return p.id === coverId; });
+        if (match) return match.src;
+      } catch (err) { /* ignore malformed photo data */ }
+    }
+    return null;
+  }
+
+  function renderJournalTimeline() {
+    var stories = allData.filter(function(d) { return d.type === 'journal_story'; }).sort(function(a, b) { return (b.date || '').localeCompare(a.date || ''); });
+    var container = document.getElementById('journal-timeline');
+    var empty = document.getElementById('journal-empty');
+    if (!stories.length) { container.innerHTML = ''; empty.classList.remove('hidden'); return; }
+    empty.classList.add('hidden');
+    container.innerHTML = stories.map(function(s) {
+      var stars = '★'.repeat(s.rating || 0) + '☆'.repeat(5 - (s.rating || 0));
+      var cover = getStoryCoverPhoto(s);
+      var coverImg = cover ? '<img src="' + cover + '" alt="Cover photo" class="w-14 h-14 rounded-xl object-cover flex-shrink-0 mr-3">' : '';
+      return '<div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100"><div class="flex justify-between items-start mb-2"><div class="flex items-center">' + coverImg + '<div><p class="font-bold text-gray-900">' + (s.location || s.journal_state || 'On the road') + '</p><p class="text-xs text-gray-400">' + (s.date || '') + (s.journal_trip_day ? ' • Day ' + s.journal_trip_day : '') + '</p></div></div><span class="text-amber-400 text-sm">' + stars + '</span></div>' + (s.journal_favorite_memory ? '<p class="text-sm text-gray-700 mb-1"><span class="font-medium">💛</span> ' + s.journal_favorite_memory + '</p>' : '') + (s.journal_biggest_laugh ? '<p class="text-sm text-gray-700 mb-1"><span class="font-medium">😂</span> ' + s.journal_biggest_laugh + '</p>' : '') + '<div class="flex gap-2 mt-3"><button type="button" onclick="editStory(\'' + s.__backendId + '\')" class="text-xs px-3 py-1 bg-emerald-50 text-emerald-700 rounded-lg font-medium border border-emerald-200">Edit</button><button type="button" onclick="deleteStory(\'' + s.__backendId + '\')" class="text-xs px-3 py-1 bg-red-50 text-red-600 rounded-lg font-medium border border-red-200">Delete</button></div></div>';
+    }).join('');
+  }
+  window.editStory = function(id) { var story = allData.find(function(d) { return d.__backendId === id; }); if (!story) return; editingStoryId = id; document.getElementById('js-date').value = story.date || ''; document.getElementById('js-day').value = story.journal_trip_day || ''; document.getElementById('js-state').value = story.journal_state || ''; document.getElementById('js-location').value = story.location || ''; document.getElementById('js-lodging').value = story.journal_lodging || ''; var peopleNames = (story.journal_people || '').split('|').map(function(n) { return n.trim(); }).filter(Boolean); var peopleList = document.getElementById('js-people-list'); peopleList.innerHTML = ''; (peopleNames.length ? peopleNames : ['']).forEach(function(name) { var input = document.createElement('input'); input.type = 'text'; input.className = 'js-person-input w-full p-3 border rounded-xl'; input.placeholder = 'Name (family, friend, relative, or someone you met)'; input.value = name; peopleList.appendChild(input); }); document.getElementById('js-memory').value = story.journal_favorite_memory || ''; document.getElementById('js-laugh').value = story.journal_biggest_laugh || ''; document.getElementById('js-surprise').value = story.journal_surprise || ''; document.getElementById('js-learned').value = story.journal_learned || ''; document.getElementById('js-remember').value = story.journal_remember || ''; document.getElementById('js-spark-answer').value = story.journal_memory_spark || ''; jsRating = story.rating || 0; document.querySelectorAll('.js-star').forEach(function(st, i) { st.style.color = i < jsRating ? '#f59e0b' : '#d1d5db'; }); setReturnChoice(story.journal_would_return || ''); document.getElementById('js-return-reason').value = story.journal_return_reason || ''; journalPhotoCategories.forEach(function(c) { var raw = story['journal_photos_' + c]; try { journalPhotos[c] = raw ? JSON.parse(raw) : []; } catch (err) { journalPhotos[c] = []; } journalPhotoCover[c] = story['journal_cover_' + c] || null; }); renderAllPhotoSlots(); document.getElementById('journal-home').classList.add('hidden'); document.getElementById('journal-story-form').classList.remove('hidden'); document.getElementById('journal-book-view').classList.add('hidden'); };
+  window.deleteStory = async function(id) { var story = allData.find(function(d) { return d.__backendId === id; }); if (story) await window.dataSdk.delete(story); };
+
+  function renderBookSummary() {
+    var stories = allData.filter(function(d) { return d.type === 'journal_story'; });
+    var stamps = allData.filter(function(d) { return d.type === 'passport_stamp'; });
+    var lodgings = allData.filter(function(d) { return d.type === 'lodging'; });
+    var statesVisited = [...new Set(stories.map(function(s) { return s.journal_state; }).filter(Boolean))];
+    var html = '<ul class="space-y-2"><li>✅ <strong>Cover Page</strong> — ' + (tripSetup ? tripSetup.trip_name || 'Your Trip' : 'Your Trip') + '</li><li>✅ <strong>States Visited</strong> — ' + (statesVisited.length ? statesVisited.join(', ') : 'Add stories') + '</li><li>✅ <strong>Daily Stories</strong> — ' + stories.length + ' days</li><li>✅ <strong>Passport Stamps</strong> — ' + stamps.length + '</li><li>✅ <strong>Lodging Stops</strong> — ' + lodgings.length + '</li></ul><p class="text-sm text-gray-500 mt-4 italic">Keep adding stories each day. 📖</p>';
+    var covers = stories.map(getStoryCoverPhoto).filter(Boolean).slice(0, 6);
+    if (covers.length) {
+      html += '<div class="mt-4"><p class="text-xs font-semibold text-gray-500 mb-2">Cover Photos</p><div class="grid grid-cols-3 gap-2">' + covers.map(function(src) { return '<img src="' + src + '" alt="Trip cover photo" class="w-full h-16 rounded-lg object-cover">'; }).join('') + '</div></div>';
+    }
+    document.getElementById('book-contents').innerHTML = html;
+  }
+
+  function loadFinalReflection() {
+    var ref = allData.find(function(d) { return d.type === 'journal_final_reflection'; });
+    if (!ref) return;
+    var map = {'jr-place':'journal_final_place','jr-meal':'journal_final_meal','jr-park':'journal_final_park','jr-state-park':'journal_final_state_park','jr-capitol':'journal_final_capitol','jr-drive':'journal_final_drive','jr-wildlife':'journal_final_wildlife','jr-market':'journal_final_market','jr-gem':'journal_final_gem','jr-tip':'journal_final_tip','jr-next':'journal_final_next'};
+    for (var id in map) { var el = document.getElementById(id); if (el && ref[map[id]]) el.value = ref[map[id]]; }
+  }
+  document.getElementById('jr-save-btn').addEventListener('click', async function() {
+    var existing = allData.find(function(d) { return d.type === 'journal_final_reflection'; });
+    var record = { type: 'journal_final_reflection', journal_final_place: document.getElementById('jr-place').value, journal_final_meal: document.getElementById('jr-meal').value, journal_final_park: document.getElementById('jr-park').value, journal_final_state_park: document.getElementById('jr-state-park').value, journal_final_capitol: document.getElementById('jr-capitol').value, journal_final_drive: document.getElementById('jr-drive').value, journal_final_wildlife: document.getElementById('jr-wildlife').value, journal_final_market: document.getElementById('jr-market').value, journal_final_gem: document.getElementById('jr-gem').value, journal_final_tip: document.getElementById('jr-tip').value, journal_final_next: document.getElementById('jr-next').value };
+    var btn = document.getElementById('jr-save-btn'); btn.disabled = true; btn.style.opacity = '0.5';
+    var result = existing ? await window.dataSdk.update(Object.assign({}, existing, record)) : await window.dataSdk.create(record);
+    btn.disabled = false; btn.style.opacity = '1';
+    showStatus('jr-status', result.isOk ? 'Reflection saved! 🌟' : 'Error', result.isOk);
+  });
+
+  // ========== TRIP STOPS ==========
+  function getLodgings() { return allData.filter(function(d) { return d.type === 'lodging'; }).sort(function(a, b) { return (a.lodging_checkin || '').localeCompare(b.lodging_checkin || ''); }); }
+  function calcNights(checkin, checkout) { if (!checkin || !checkout) return 0; return Math.max(0, Math.round((new Date(checkout) - new Date(checkin)) / 86400000)); }
+  function getPaymentStatus(total, paid) { total = Number(total) || 0; paid = Number(paid) || 0; if (total === 0 && paid === 0) return { label: 'Not Reserved', bg: 'bg-gray-100 text-gray-600' }; if (paid >= total) return { label: 'Paid in Full', bg: 'bg-green-100 text-green-700' }; if (paid > 0) return { label: 'Deposit Paid', bg: 'bg-amber-100 text-amber-700' }; return { label: 'Payment Due', bg: 'bg-red-100 text-red-700' }; }
+  function formatDate(d) { if (!d) return ''; var p = d.split('-'); return p[1] + '/' + p[2] + '/' + p[0]; }
+
+  function renderTripStops() {
+    var lodgings = getLodgings();
+    var today = new Date().toISOString().split('T')[0];
+    var todayStop = lodgings.find(function(l) { return l.lodging_checkin <= today && (l.lodging_checkout || '9999') >= today; });
+    var container = document.getElementById('stops-today');
+    if (todayStop) { var status = getPaymentStatus(todayStop.lodging_total, todayStop.lodging_paid); container.innerHTML = '<div class="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-6 shadow-md border-2 border-emerald-200"><div class="flex items-center justify-between mb-4"><h3 class="text-lg font-bold text-emerald-800">✨ Today\'s Stop</h3><span class="px-3 py-1 text-xs font-semibold rounded-full ' + status.bg + '">' + status.label + '</span></div><h4 class="text-2xl font-bold text-gray-900 mb-1">' + (todayStop.lodging_name || '') + '</h4></div>'; }
+    else { container.innerHTML = '<div class="rounded-2xl p-6 bg-gray-50 border-2 border-dashed border-gray-200 text-center"><p class="text-gray-500 text-lg">No check-in today</p></div>'; }
+    var totalStops = lodgings.length; var totalNights = lodgings.reduce(function(s, l) { return s + calcNights(l.lodging_checkin, l.lodging_checkout); }, 0);
+    document.getElementById('stops-overview').innerHTML = '<div class="bg-white rounded-2xl p-5 text-center shadow-sm border border-emerald-100"><p class="text-xs text-gray-500 font-semibold mb-1">Total Stops</p><p class="text-3xl font-bold text-emerald-700">' + totalStops + '</p></div><div class="bg-white rounded-2xl p-5 text-center shadow-sm border border-blue-100"><p class="text-xs text-gray-500 font-semibold mb-1">Total Nights</p><p class="text-3xl font-bold text-blue-700">' + totalNights + '</p></div>';
+    var timelineEl = document.getElementById('stops-timeline');
+    if (!lodgings.length) { timelineEl.innerHTML = '<div class="text-center py-8 text-gray-400"><p>No stops added yet</p></div>'; return; }
+    timelineEl.innerHTML = lodgings.map(function(l, idx) { var nights = calcNights(l.lodging_checkin, l.lodging_checkout); var status = getPaymentStatus(Number(l.lodging_total), Number(l.lodging_paid)); return '<div class="stop-card bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden" data-stop-idx="' + idx + '"><div class="p-5 cursor-pointer" onclick="toggleStop(' + idx + ')"><div class="flex items-center justify-between"><div class="flex-1 min-w-0"><h4 class="font-bold text-gray-900 truncate">' + (l.lodging_name || 'Stop ' + (idx+1)) + '</h4><p class="text-sm text-gray-500">' + formatDate(l.lodging_checkin) + ' → ' + formatDate(l.lodging_checkout) + (nights ? ' • ' + nights + ' nights' : '') + '</p></div><span class="px-2.5 py-1 text-xs font-semibold rounded-full ' + status.bg + '">' + status.label + '</span></div></div><div class="stop-detail" id="stop-detail-' + idx + '"><div class="px-5 pb-5 border-t border-gray-100 pt-4"><button type="button" onclick="deleteStop(' + idx + ')" class="px-3 py-2 bg-red-50 text-red-600 rounded-lg text-sm font-medium border border-red-200">🗑️ Delete</button></div></div></div>'; }).join('');
+  }
+  window.toggleStop = function(idx) { var card = document.querySelectorAll('.stop-card')[idx]; var detail = document.getElementById('stop-detail-' + idx); if (!card || !detail) return; card.classList.toggle('expanded'); detail.classList.toggle('open'); };
+  window.deleteStop = async function(idx) { var lodgings = getLodgings(); if (lodgings[idx]) await window.dataSdk.delete(lodgings[idx]); };
+
+  document.getElementById('stops-add-btn').addEventListener('click', function() { document.getElementById('stops-form').reset(); document.getElementById('stops-form-wrapper').classList.remove('hidden'); document.getElementById('stops-form-wrapper').scrollIntoView({ behavior: 'smooth' }); });
+  document.getElementById('stops-cancel-btn').addEventListener('click', function() { document.getElementById('stops-form-wrapper').classList.add('hidden'); });
+  document.getElementById('stops-scan-btn').addEventListener('click', function() { showStatus('stops-form-status', 'Scan & Autofill will be available in a future update.', false); });
+  ['sf-rate', 'sf-taxes', 'sf-checkin', 'sf-checkout'].forEach(function(id) { document.getElementById(id).addEventListener('input', calcStopTotal); });
+  function calcStopTotal() { var nights = calcNights(document.getElementById('sf-checkin').value, document.getElementById('sf-checkout').value); var rate = Number(document.getElementById('sf-rate').value) || 0; var taxes = Number(document.getElementById('sf-taxes').value) || 0; document.getElementById('sf-total').value = (nights * rate + taxes).toFixed(2); }
+
+  document.getElementById('stops-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    if (allData.length >= 999) { showStatus('stops-form-status', 'Maximum 999 records reached', false); return; }
+    var record = { type: 'lodging', lodging_name: document.getElementById('sf-name').value, lodging_type: document.getElementById('sf-type').value, lodging_address: document.getElementById('sf-address').value, lodging_phone: document.getElementById('sf-phone').value, lodging_email: document.getElementById('sf-email').value, lodging_website: document.getElementById('sf-website').value, lodging_confirmation: document.getElementById('sf-confirmation').value, lodging_checkin: document.getElementById('sf-checkin').value, lodging_checkout: document.getElementById('sf-checkout').value, lodging_checkin_time: document.getElementById('sf-checkin-time').value, lodging_checkout_time: document.getElementById('sf-checkout-time').value, lodging_nights: calcNights(document.getElementById('sf-checkin').value, document.getElementById('sf-checkout').value), lodging_site_number: document.getElementById('sf-site-number').value, lodging_site_type: document.getElementById('sf-site-type').value, lodging_rate: Number(document.getElementById('sf-rate').value) || 0, lodging_taxes: Number(document.getElementById('sf-taxes').value) || 0, lodging_total: Number(document.getElementById('sf-total').value) || 0, lodging_paid: Number(document.getElementById('sf-paid').value) || 0, lodging_payment_method: document.getElementById('sf-payment-method').value, lodging_notes: document.getElementById('sf-notes').value };
+    var result = await window.dataSdk.create(record);
+    if (result.isOk) { document.getElementById('stops-form').reset(); document.getElementById('stops-form-wrapper').classList.add('hidden'); }
+    showStatus('stops-form-status', result.isOk ? 'Stop saved!' : 'Error', result.isOk);
+  });
+
+  // ========== LEARN TAB (single source of truth — the earlier duplicate handler,
+  // a dangling/corrupted leftover state-content object, and an undefined "stateOptions"
+  // reference that broke script execution have all been removed) ==========
+  var learnTopics = ['History','Geography','Wildlife','State Symbols','National Parks','Famous Places','Hidden Gems','Fun Facts','Roadside Attractions','Food','Famous People','Major Cities','Climate','Native American History','Economy','Agriculture'];
+
+  // learnData[state][topic] = { title, content } — single source of truth for Learn tab content.
+  // To add a new state/topic later, add another entry here; no other code needs to change.
+  var learnData = {
+    Florida: {
+      'Fun Facts': {
+        title: 'Florida: Fun Facts',
+        content: '<div class="inline-block px-3 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full">Fact-Checked Learning</div>' +
+          '<p class="text-gray-700 leading-relaxed">Florida is full of unusual stories, surprising facts, and interesting details. Some amazing facts are real, while others are outdated or misunderstood. Wise Family Living will clearly label each one so families know what is verified.</p>' +
+          '<div class="bg-emerald-50 rounded-xl p-4 border border-emerald-200 space-y-2">' +
+          '<h4 class="font-semibold text-gray-900">Alligators and Crocodiles Live Here</h4>' +
+          '<p class="text-sm text-gray-700">Southern Florida is one of the rare places where American alligators and American crocodiles can both be found in the wild. They prefer different habitats, but their ranges overlap in parts of South Florida.</p>' +
+          '<p class="text-xs italic text-gray-600 mt-2">👨\u200d👩\u200d👧 Ask your family: How would you tell an alligator and a crocodile apart?</p>' +
+          '</div>' +
+          '<div class="bg-amber-50 rounded-xl p-4 border border-amber-200 space-y-2">' +
+          '<h4 class="font-semibold text-gray-900">Florida\'s Highest Point Is Surprisingly Low</h4>' +
+          '<p class="text-sm text-gray-700">Britton Hill is Florida\'s highest natural point, but it rises only about 345 feet above sea level. Florida has the lowest state high point in the United States.</p>' +
+          '<p class="text-xs italic text-gray-600 mt-2">👨\u200d👩\u200d👧 Ask your family: Is your hometown higher than Florida\'s highest point?</p>' +
+          '</div>' +
+          '<div class="bg-orange-50 rounded-xl p-4 border border-orange-200 space-y-2">' +
+          '<h4 class="font-semibold text-gray-900">Florida Has an Official State Pie</h4>' +
+          '<p class="text-sm text-gray-700">Key lime pie is Florida\'s official state pie. It is closely connected to the Florida Keys and is traditionally made with Key lime juice.</p>' +
+          '<p class="text-xs italic text-gray-600 mt-2">👨\u200d👩\u200d👧 Ask your family: Would you try a sweet and tart slice of Key lime pie?</p>' +
+          '</div>' +
+          '<div class="bg-indigo-50 rounded-xl p-4 border border-indigo-200">' +
+          '<h4 class="font-semibold text-gray-900 mb-2">Tell Someone in the Car</h4>' +
+          '<p class="text-sm text-gray-700">Florida\'s highest point is only about 345 feet above sea level. Did you expect it to be higher or lower?</p>' +
+          '</div>'
+      }
+    }
+  };
+
+  var learnStateSelect = document.getElementById('learn-state');
+  var learnTopicSelect = document.getElementById('learn-topic');
+  var learnStatus = document.getElementById('learn-status');
+  var learnContentDiv = document.getElementById('learn-content');
+  var learnContentInner = document.getElementById('learn-content-inner');
+
+  if (learnStateSelect && learnTopicSelect) {
+    learnTopicSelect.disabled = true;
+    learnTopics.forEach(function(topic) { learnTopicSelect.appendChild(new Option(topic, topic)); });
+
+    var learnSelectedState = '';
+    var learnSelectedTopic = '';
+
+    learnStateSelect.addEventListener('change', function() {
+      learnSelectedState = this.value;
+      learnSelectedTopic = '';
+
+      if (learnSelectedState) {
+        learnTopicSelect.disabled = false;
+        learnTopicSelect.value = '';
+        learnStatus.textContent = 'Now choose a topic to explore ' + learnSelectedState + '.';
+        learnContentDiv.classList.add('hidden');
+        learnContentInner.innerHTML = '';
+      } else {
+        learnTopicSelect.disabled = true;
+        learnStatus.textContent = 'Choose a state above to begin.';
+        learnContentDiv.classList.add('hidden');
+        learnContentInner.innerHTML = '';
+      }
+    });
+
+    learnTopicSelect.addEventListener('change', function() {
+      learnSelectedTopic = this.value;
+
+      if (learnSelectedTopic && learnSelectedState) {
+        learnStatus.textContent = 'Exploring ' + learnSelectedTopic + ' in ' + learnSelectedState;
+        learnContentDiv.classList.remove('hidden');
+        displayLearnContent();
+      } else if (learnSelectedState && !learnSelectedTopic) {
+        learnStatus.textContent = 'Now choose a topic to explore ' + learnSelectedState + '.';
+        learnContentDiv.classList.add('hidden');
+        learnContentInner.innerHTML = '';
+      }
+    });
+
+    function displayLearnContent() {
+      var stateData = learnData[learnSelectedState];
+      var topicData = stateData ? stateData[learnSelectedTopic] : null;
+
+      if (!topicData) {
+        learnContentInner.innerHTML = '<p class="text-gray-600">Detailed information for this state and topic is coming soon.</p>';
+        return;
+      }
+
+      var html = '<div class="space-y-6">';
+      html += '<h3 class="text-2xl font-bold text-gray-900">' + topicData.title + '</h3>';
+      html += topicData.content;
+
+      if (learnSelectedState === 'Florida' && learnSelectedTopic === 'Fun Facts') {
+        var learned = localStorage.getItem('learn_florida_funfacts') === 'true';
+        html += '<button type="button" id="learn-mark-btn" class="w-full py-3 bg-emerald-600 text-white rounded-xl font-semibold hover:bg-emerald-700 transition" onclick="markLearnedFunFacts()">';
+        html += learned ? '✓ Learned' : 'Mark as Learned';
+        html += '</button>';
+      }
+
+      html += '</div>';
+      learnContentInner.innerHTML = html;
+    }
+  }
+
+  window.markLearnedFunFacts = function() {
+    localStorage.setItem('learn_florida_funfacts', 'true');
+    var btn = document.getElementById('learn-mark-btn');
+    if (btn) {
+      btn.textContent = '✓ Learned';
+      btn.disabled = true;
+      btn.style.opacity = '0.7';
+    }
+  };
+
+  // ========== LOCAL WISDOM ==========
+  var localQuestions = [
+    'Where do locals like to eat?',
+    'What is one place tourists usually miss?',
+    'Is there a farmers market nearby?',
+    'What is the best family-friendly activity here?',
+    'What is worth driving 30 minutes to see?',
+    'Is there anything we should avoid?',
+    'Are there road closures or construction areas?',
+    'Is Uber, Lyft, taxi, trolley, or shuttle service available?',
+    'Where is the easiest place to park?',
+    'What is the best free thing to do nearby?',
+    'Where would you take your own family?',
+    'Is there a scenic route we should know about?'
+  ];
+  document.getElementById('local-questions').innerHTML = localQuestions.map(function(q) {
+    return '<button type="button" class="w-full text-left p-3.5 bg-white border border-gray-200 rounded-xl text-sm text-gray-700 leading-relaxed hover:border-emerald-300 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"><span class="text-emerald-500 font-semibold mr-1">"</span>' + q + '</button>';
+  }).join('');
+
+  var officialResources = [
+    {title:'National Park Service', desc:'Official NPS info on parks, passes, and activities', url:'https://www.nps.gov'},
+    {title:'Recreation.gov', desc:'Reserve campsites at national forests and parks', url:'https://www.recreation.gov'},
+    {title:'ReserveAmerica', desc:'Book campsites at state parks and private campgrounds', url:'https://www.reserveamerica.com'},
+    {title:'America the Beautiful Pass', desc:'Annual pass for entry to 2,000+ federal recreation sites', url:'https://www.nps.gov/planyourvisit/passes.htm'},
+    {title:'National Weather Service', desc:'Official weather forecasts and alerts', url:'https://www.weather.gov'},
+    {title:'State Road Conditions', desc:'Current road and highway conditions by state', url:'https://www.fhwa.dot.gov/trafficinfo/'},
+    {title:'Leave No Trace', desc:'Principles for protecting nature while camping', url:'https://lnt.org'},
+    {title:'Junior Ranger Resources', desc:'Free kids programs at national parks', url:'https://www.nps.gov/kids/'},
+    {title:'Passport Stamp Info', desc:'Passport to Your National Parks program', url:'https://www.nps.gov/planyourvisit/passport-to-your-national-parks.htm'},
+    {title:'Roadside Safety', desc:'Information about staying safe on the road', url:'https://www.safercar.gov'},
+    {title:'Emergency Preparedness', desc:'FEMA resources for emergency planning', url:'https://www.ready.gov/'}
+  ];
+  document.getElementById('official-resources').innerHTML = officialResources.map(function(r) {
+    return '<div class="bg-white rounded-xl p-4 border border-gray-200 hover:border-emerald-200 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"><h4 class="font-semibold text-gray-900 mb-1 tracking-tight">' + r.title + '</h4><p class="text-sm text-gray-600 mb-3 leading-relaxed">' + r.desc + '</p><a href="' + r.url + '" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-emerald-700 hover:text-emerald-800">Open Resource →</a></div>';
+  }).join('');
+
+  var wisdomTips = [
+    {title:'Visitor centers are gold', detail:'Visitor centers are one of the best places to find hidden gems, local restaurants, family-friendly activities, and current road information. Ask staff about their favorite local spots.'},
+    {title:'Ask where locals eat', detail:'When you arrive in a new town, ask someone local where they would take their own family. You\'ll get authentic recommendations you won\'t find online.'},
+    {title:'Farmers markets matter', detail:'Farmers markets are one of the best ways to experience local food, handmade goods, and community personality. Kids love exploring too.'},
+    {title:'Rideshare reality check', detail:'Before relying on rideshare, ask if Uber, Lyft, taxis, trolleys, or shuttles actually operate in that area. Rural locations may have limited options.'},
+    {title:'Local advice saves time', detail:'Local advice can save time, save money, and help families make better memories. Don\'t hesitate to ask for recommendations.'}
+  ];
+  document.getElementById('wisdom-tips').innerHTML = wisdomTips.map(function(t, i) {
+    return '<div class="toolbox-card border" id="wis-' + i + '"><div class="toolbox-card-header cursor-pointer" onclick="toggleToolboxCard(\'wis-' + i + '\')"><p class="font-semibold text-gray-800 text-sm pr-4">' + t.title + '</p><span class="toolbox-chevron text-gray-400 text-sm flex-shrink-0">▼</span></div><div class="toolbox-card-body"><div class="px-4 pb-3 pt-2 text-sm text-gray-600 leading-relaxed">' + t.detail + '</div></div></div>';
+  }).join('');
+
+  window.openTipsForm = function() { document.getElementById('tips-form-wrapper').classList.remove('hidden'); document.getElementById('tips-form-wrapper').scrollIntoView({behavior:'smooth'}); };
+  window.closeTipsForm = function() { document.getElementById('tips-form-wrapper').classList.add('hidden'); document.getElementById('save-tip-form').reset(); };
+  window.setRecommend = function(val) { document.getElementById('tf-recommend').value = val; };
+  window.openTransportForm = function() { document.getElementById('transport-form-wrapper').classList.remove('hidden'); document.getElementById('transport-form-wrapper').scrollIntoView({behavior:'smooth'}); };
+  window.closeTransportForm = function() { document.getElementById('transport-form-wrapper').classList.add('hidden'); document.getElementById('save-transport-form').reset(); };
+  window.openFoodForm = function() { document.getElementById('food-form-wrapper').classList.remove('hidden'); document.getElementById('food-form-wrapper').scrollIntoView({behavior:'smooth'}); };
+  window.closeFoodForm = function() { document.getElementById('food-form-wrapper').classList.add('hidden'); document.getElementById('save-food-form').reset(); };
+  window.setEatAgain = function(val) { document.getElementById('fo-eat-again').value = val; };
+
+  document.getElementById('save-tip-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    if (allData.length >= 999) { showStatus('save-tip-status', 'Max records reached', false); return; }
+    var record = { type: 'local_tip', tip_type: document.getElementById('tf-type').value, tip_place_name: document.getElementById('tf-place').value, tip_address: document.getElementById('tf-address').value, tip_phone: document.getElementById('tf-phone').value, tip_website: document.getElementById('tf-website').value, tip_recommended_by: document.getElementById('tf-recommended').value, tip_notes: document.getElementById('tf-notes').value, tip_recommend: document.getElementById('tf-recommend').value };
+    var result = await window.dataSdk.create(record);
+    if (result.isOk) { closeTipsForm(); renderLocalTips(); }
+    showStatus('save-tip-status', result.isOk ? 'Tip saved!' : 'Error', result.isOk);
+  });
+
+  function renderLocalTips() {
+    var tips = allData.filter(function(d) { return d.type === 'local_tip'; });
+    var container = document.getElementById('saved-tips');
+    container.innerHTML = tips.map(function(t) {
+      var recIcon = t.tip_recommend === 'yes' ? '👍' : t.tip_recommend === 'maybe' ? '🤷' : '👎';
+      return '<div class="bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl p-4 border border-amber-200 hover:shadow-md transition-all duration-200"><div class="flex justify-between items-start mb-2"><h4 class="font-semibold text-gray-900">' + (t.tip_place_name || 'Tip') + '</h4><span class="text-lg">' + recIcon + '</span></div><p class="text-xs text-gray-600 mb-2">' + (t.tip_type || '') + ' • ' + (t.tip_recommended_by || '') + '</p>' + (t.tip_notes ? '<p class="text-sm text-gray-700 mb-2 leading-relaxed">' + t.tip_notes + '</p>' : '') + '<button type="button" onclick="deleteTip(\'' + t.__backendId + '\')" class="text-xs px-2 py-1 bg-red-100 text-red-600 rounded font-medium">Delete</button></div>';
+    }).join('');
+    if (!tips.length) container.innerHTML = '<p class="text-center text-gray-400 py-4">Your favorite local discoveries will appear here.</p>';
+  }
+  window.deleteTip = async function(id) { var tip = allData.find(function(d) { return d.__backendId === id; }); if (tip) await window.dataSdk.delete(tip); };
+
+  document.getElementById('save-transport-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    if (allData.length >= 999) { showStatus('save-transport-status', 'Max records reached', false); return; }
+    var record = { type: 'local_transport', transport_name: document.getElementById('tr-name').value, transport_available: document.getElementById('tr-available').value, transport_phone_number: document.getElementById('tr-phone').value, transport_website_url: document.getElementById('tr-website').value, transport_cost: document.getElementById('tr-cost').value, transport_hours: document.getElementById('tr-hours').value, transport_tip: document.getElementById('tr-tip').value };
+    var result = await window.dataSdk.create(record);
+    if (result.isOk) { closeTransportForm(); renderLocalTransport(); }
+    showStatus('save-transport-status', result.isOk ? 'Saved!' : 'Error', result.isOk);
+  });
+
+  function renderLocalTransport() {
+    var trans = allData.filter(function(d) { return d.type === 'local_transport'; });
+    var container = document.getElementById('saved-transport');
+    container.innerHTML = trans.map(function(t) {
+      return '<div class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-4 border border-blue-200 hover:shadow-md transition-all duration-200"><h4 class="font-semibold text-gray-900 mb-1">' + (t.transport_name || 'Transport') + '</h4><p class="text-xs text-gray-600 mb-2">Available: ' + (t.transport_available || '—') + '</p>' + (t.transport_tip ? '<p class="text-sm text-gray-700 mb-2 leading-relaxed">' + t.transport_tip + '</p>' : '') + '<button type="button" onclick="deleteTransport(\'' + t.__backendId + '\')" class="text-xs px-2 py-1 bg-red-100 text-red-600 rounded font-medium">Delete</button></div>';
+    }).join('');
+    if (!trans.length) container.innerHTML = '<p class="text-center text-gray-400 py-4">Your saved ways to get around will appear here.</p>';
+  }
+  window.deleteTransport = async function(id) { var t = allData.find(function(d) { return d.__backendId === id; }); if (t) await window.dataSdk.delete(t); };
+
+  document.getElementById('save-food-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    if (allData.length >= 999) { showStatus('save-food-status', 'Max records reached', false); return; }
+    var record = { type: 'local_food', food_place_name: document.getElementById('fo-place').value, food_type: document.getElementById('fo-type').value, food_address: document.getElementById('fo-address').value, food_recommended_by: document.getElementById('fo-recommended').value, food_what_tried: document.getElementById('fo-tried').value, food_eat_again: document.getElementById('fo-eat-again').value, food_notes: document.getElementById('fo-notes').value };
+    var result = await window.dataSdk.create(record);
+    if (result.isOk) { closeFoodForm(); renderLocalFood(); }
+    showStatus('save-food-status', result.isOk ? 'Saved!' : 'Error', result.isOk);
+  });
+
+  function renderLocalFood() {
+    var foods = allData.filter(function(d) { return d.type === 'local_food'; });
+    var container = document.getElementById('saved-food');
+    container.innerHTML = foods.map(function(f) {
+      return '<div class="bg-gradient-to-br from-rose-50 to-pink-50 rounded-xl p-4 border border-rose-200 hover:shadow-md transition-all duration-200"><h4 class="font-semibold text-gray-900 mb-1">' + (f.food_place_name || 'Restaurant') + '</h4><p class="text-xs text-gray-600 mb-2">' + (f.food_type || '') + '</p>' + (f.food_what_tried ? '<p class="text-sm text-gray-700 mb-2 leading-relaxed">Tried: ' + f.food_what_tried + '</p>' : '') + '<button type="button" onclick="deleteFood(\'' + f.__backendId + '\')" class="text-xs px-2 py-1 bg-red-100 text-red-600 rounded font-medium">Delete</button></div>';
+    }).join('');
+    if (!foods.length) container.innerHTML = '<p class="text-center text-gray-400 py-4">Your favorite local food finds will appear here.</p>';
+  }
+  window.deleteFood = async function(id) { var f = allData.find(function(d) { return d.__backendId === id; }); if (f) await window.dataSdk.delete(f); };
+
+  // ========== TRAVEL TOOLBOX ==========
+  window.toggleToolboxCard = function(id) {
+    document.getElementById(id).classList.toggle('open');
+  };
+
+  function loadEmergencyInfo() {
+    var rec = allData.find(function(d) { return d.type === 'emergency_info'; });
+    if (!rec) return;
+    var map = {'em-primary-name':'emergency_primary_name','em-primary-rel':'emergency_primary_relationship','em-primary-phone':'emergency_primary_phone','em-secondary-name':'emergency_secondary_name','em-secondary-rel':'emergency_secondary_relationship','em-secondary-phone':'emergency_secondary_phone','em-doctor':'emergency_doctor','em-vet':'emergency_vet','em-insurance':'emergency_insurance','em-roadside-provider':'roadside_provider','em-roadside-member':'roadside_member_number','em-roadside-phone':'roadside_phone','em-roadside-exp':'roadside_expiration','em-ins-company':'insurance_company','em-ins-policy':'insurance_policy','em-ins-phone':'insurance_claims_phone','em-veh-make':'vehicle_make','em-veh-model':'vehicle_model','em-veh-year':'vehicle_year','em-veh-plate':'vehicle_plate','em-veh-vin':'vehicle_vin','em-veh-fuel':'vehicle_fuel','em-veh-tire':'vehicle_tire_size','em-tr-make':'trailer_make','em-tr-model':'trailer_model','em-tr-plate':'trailer_plate','em-tr-vin':'trailer_vin','em-tr-insurance':'trailer_insurance','em-park-pass':'park_pass_type','em-koa':'camping_memberships','em-harvest':'park_pass_number','em-thousand':'roadside_member_number','em-other-camp':'camping_memberships'};
+    for (var id in map) { var el = document.getElementById(id); if (el && rec[map[id]]) el.value = rec[map[id]]; }
+  }
+
+  document.getElementById('em-save-btn').addEventListener('click', async function() {
+    if (allData.length >= 999 && !allData.find(function(d){return d.type==='emergency_info';})) { showStatus('em-status', 'Max records reached', false); return; }
+    var record = { type: 'emergency_info', emergency_primary_name: document.getElementById('em-primary-name').value, emergency_primary_relationship: document.getElementById('em-primary-rel').value, emergency_primary_phone: document.getElementById('em-primary-phone').value, emergency_secondary_name: document.getElementById('em-secondary-name').value, emergency_secondary_relationship: document.getElementById('em-secondary-rel').value, emergency_secondary_phone: document.getElementById('em-secondary-phone').value, emergency_doctor: document.getElementById('em-doctor').value, emergency_vet: document.getElementById('em-vet').value, emergency_insurance: document.getElementById('em-insurance').value, roadside_provider: document.getElementById('em-roadside-provider').value, roadside_member_number: document.getElementById('em-roadside-member').value, roadside_phone: document.getElementById('em-roadside-phone').value, roadside_expiration: document.getElementById('em-roadside-exp').value, insurance_company: document.getElementById('em-ins-company').value, insurance_policy: document.getElementById('em-ins-policy').value, insurance_claims_phone: document.getElementById('em-ins-phone').value, vehicle_make: document.getElementById('em-veh-make').value, vehicle_model: document.getElementById('em-veh-model').value, vehicle_year: document.getElementById('em-veh-year').value, vehicle_plate: document.getElementById('em-veh-plate').value, vehicle_vin: document.getElementById('em-veh-vin').value, vehicle_fuel: document.getElementById('em-veh-fuel').value, vehicle_tire_size: document.getElementById('em-veh-tire').value, trailer_make: document.getElementById('em-tr-make').value, trailer_model: document.getElementById('em-tr-model').value, trailer_plate: document.getElementById('em-tr-plate').value, trailer_vin: document.getElementById('em-tr-vin').value, trailer_insurance: document.getElementById('em-tr-insurance').value, park_pass_type: document.getElementById('em-park-pass').value, camping_memberships: document.getElementById('em-other-camp').value };
+    var btn = document.getElementById('em-save-btn'); btn.disabled = true; btn.style.opacity = '0.5';
+    var existing = allData.find(function(d) { return d.type === 'emergency_info'; });
+    var result = existing ? await window.dataSdk.update(Object.assign({}, existing, record)) : await window.dataSdk.create(record);
+    btn.disabled = false; btn.style.opacity = '1';
+    showStatus('em-status', result.isOk ? 'Emergency info saved! ✓' : 'Error saving', result.isOk);
+  });
+
+  // Checklists (localStorage-based, per-device)
+  var vehicleItems = ['Check engine oil','Check coolant','Check tire pressure','Inspect tire tread','Check spare tire','Check windshield washer fluid','Test headlights','Test brake lights','Test turn signals','Check battery','Clean windows','Fill fuel tank','Schedule oil change if needed','Charge electronics','Remove unnecessary clutter'];
+  var rvItems = ['Test trailer lights','Check electrical connection','Test brakes','Check hitch','Safety chains','Breakaway cable','Check tire pressure','Inspect lug nuts','Check propane','Fill fresh water','Empty gray tank','Empty black tank','Secure cabinets','Check awning','Pack leveling blocks','Secure outdoor gear','Walk completely around camper'];
+  var comfortItems = ['Snacks','Water','Cooler','First Aid Kit','Phone Chargers','Medications','Paper Towels','Trash Bags','Pet Supplies'];
+  var toolkitItems = ['Flashlight','Extra batteries','Adjustable wrench','Socket set','Screwdrivers','Pliers','Multi-tool','Electrical tape','Duct tape','Zip ties','Portable air compressor','Jumper cables','Work gloves','Reflective safety vest','Electrical tester','Spare trailer fuses','Spare hitch pin','Tire pressure gauge','Emergency triangles'];
+
+  function renderChecklist(containerId, items, storageKey) {
+    var saved = JSON.parse(localStorage.getItem(storageKey) || '{}');
+    var container = document.getElementById(containerId);
+    container.innerHTML = items.map(function(item, i) {
+      var checked = saved[i] ? 'checked' : '';
+      return '<div class="checklist-item"><input type="checkbox" id="' + storageKey + '-' + i + '" ' + checked + ' onchange="saveChecklist(\'' + storageKey + '\',\'' + containerId + '\',' + items.length + ')"><label for="' + storageKey + '-' + i + '" class="text-sm text-gray-700 cursor-pointer">' + item + '</label></div>';
+    }).join('');
+  }
+  window.saveChecklist = function(storageKey, containerId, count) {
+    var saved = {};
+    for (var i = 0; i < count; i++) { var cb = document.getElementById(storageKey + '-' + i); if (cb && cb.checked) saved[i] = true; }
+    localStorage.setItem(storageKey, JSON.stringify(saved));
+  };
+
+  renderChecklist('checklist-vehicle', vehicleItems, 'cl_vehicle');
+  renderChecklist('checklist-rv', rvItems, 'cl_rv');
+  renderChecklist('checklist-comfort', comfortItems, 'cl_comfort');
+  renderChecklist('checklist-toolkit', toolkitItems, 'cl_toolkit');
+
+  // Quick Find buttons
+  var quickFinds = [
+    {label:'⛽ Gas Stations', q:'gas station'},
+    {label:'🔌 EV Charging', q:'EV charging station'},
+    {label:'🅿️ Rest Areas', q:'rest area'},
+    {label:'🚛 Truck Stops', q:'truck stop'},
+    {label:'🛒 Grocery Stores', q:'grocery store'},
+    {label:'💊 Pharmacies', q:'pharmacy'},
+    {label:'🦷 Dentists', q:'dentist'},
+    {label:'👓 Vision / Eye Care', q:'eye doctor optometrist'},
+    {label:'🏥 Hospitals', q:'hospital'},
+    {label:'🩺 Urgent Care', q:'urgent care'},
+    {label:'🐾 Emergency Vet', q:'emergency veterinarian'},
+    {label:'👕 Laundry', q:'laundromat'},
+    {label:'🧊 Ice', q:'ice near me'},
+    {label:'🔥 Propane', q:'propane refill'},
+    {label:'🏕️ Camping World', q:'Camping World'},
+    {label:'🏪 Walmart', q:'Walmart'},
+    {label:'🏬 Costco', q:'Costco'},
+    {label:'🛍️ Sam\'s Club', q:'Sams Club'},
+    {label:'🔧 Hardware Store', q:'hardware store'},
+    {label:'🔩 Mechanics / Auto Repair', q:'auto repair mechanic'},
+    {label:'🚨 Towing Services', q:'towing service'},
+    {label:'🚐 RV Repair', q:'RV repair'},
+    {label:'🚿 Dump Stations', q:'RV dump station'},
+    {label:'💧 Water Fill', q:'RV water fill station'},
+    {label:'🛞 Tire Shops', q:'tire shop'},
+    {label:'🏧 Banks / ATMs', q:'bank ATM'},
+    {label:'📮 Post Office', q:'post office'},
+    {label:'🗺️ Visitor Centers', q:'visitor center'},
+    {label:'⛺ Campgrounds', q:'campground'}
+  ];
+  document.getElementById('quick-find-grid').innerHTML = quickFinds.map(function(qf) {
+    return '<a href="https://www.google.com/maps/search/' + encodeURIComponent(qf.q) + '" target="_blank" rel="noopener noreferrer" class="quick-find-btn">' + qf.label + '</a>';
+  }).join('');
+
+  // Travel Conditions
+  var conditions = [
+    {label:'🌤 Weather', url:'https://weather.gov'},
+    {label:'📡 Radar', url:'https://radar.weather.gov'},
+    {label:'🚧 Road Closures', url:'https://www.fhwa.dot.gov/trafficinfo/'},
+    {label:'🚗 Traffic', url:'https://www.google.com/maps/@39,-98,5z/data=!5m1!1e1'},
+    {label:'💨 Air Quality', url:'https://www.airnow.gov'},
+    {label:'🔥 Wildfire Info', url:'https://www.nifc.gov/fire-information'},
+    {label:'⚠️ NWS Alerts', url:'https://alerts.weather.gov'}
+  ];
+  document.getElementById('conditions-grid').innerHTML = conditions.map(function(c) {
+    return '<a href="' + c.url + '" target="_blank" rel="noopener noreferrer" class="quick-find-btn">' + c.label + '</a>';
+  }).join('');
+
+  // Tips
+  var tips = [
+    {title:'Check all trailer lights before leaving.', detail:'A quick 30-second check can prevent a ticket or an accident. Have someone stand behind the trailer while you test brake lights, turn signals, and running lights.'},
+    {title:'Walk completely around your vehicle before pulling away.', detail:'This simple habit prevents backing into objects, catches flat tires, and ensures nothing is left on the roof or bumper.'},
+    {title:'Carry a basic tool kit.', detail:'A flashlight, adjustable wrench, zip ties, and duct tape can solve 80% of roadside problems without calling for help.'},
+    {title:'Store emergency contacts inside your RV.', detail:'Place a card with emergency contact info, insurance details, and medical allergies where first responders could find it.'},
+    {title:'Keep roadside assistance info in the app.', detail:'When you\'re stranded on the side of the road in the rain, the last thing you want to do is dig through a glove box.'},
+    {title:'Fuel up before entering remote areas.', detail:'Some stretches of highway in the western US can go 100+ miles between gas stations. Don\'t let the tank drop below half in unfamiliar territory.'},
+    {title:'Pack snacks before long scenic drives.', detail:'Many of America\'s most beautiful drives have limited services. A cooler with snacks and water keeps everyone happy.'},
+    {title:'Reserve popular attractions early.', detail:'Timed entry reservations for places like Glacier, Arches, and Rocky Mountain fill up months in advance.'},
+    {title:'Bring layers for changing elevations.', detail:'Mountain passes can be 30°F cooler than the valley floor. A light jacket and warm layer take almost no space.'},
+    {title:'Download offline maps before you lose signal.', detail:'Cell service disappears in national parks and rural areas. Download Google Maps offline maps for your route before you leave.'}
+  ];
+  document.getElementById('tips-list').innerHTML = tips.map(function(t, i) {
+    return '<div class="toolbox-card border" id="tip-' + i + '"><div class="toolbox-card-header" onclick="toggleToolboxCard(\'tip-' + i + '\')"><p class="font-medium text-gray-800 text-sm pr-4">💡 ' + t.title + '</p><span class="toolbox-chevron text-gray-400 text-sm flex-shrink-0">▼</span></div><div class="toolbox-card-body"><div class="px-5 pb-4 pt-2 text-sm text-gray-600">' + t.detail + '</div></div></div>';
+  }).join('');
+
+  function showStatus(id, msg, ok) { var el = document.getElementById(id); if (!el) return; el.textContent = msg; el.className = 'mt-2 text-center text-sm ' + (ok ? 'text-green-600' : 'text-red-600'); el.classList.remove('hidden'); setTimeout(function() { el.classList.add('hidden'); }, 3000); }
+
+  lucide.createIcons();
+})();
+  </script>
+ 
+</body></html>
