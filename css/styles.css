@@ -52,11 +52,11 @@
     .journal-gallery-thumb { position: relative; border-radius: 0.5rem; overflow: hidden; aspect-ratio: 1 / 1; background: #f3f4f6; cursor: pointer; }
     .journal-gallery-thumb.is-cover { outline: 3px solid #2d6a4f; }
     .journal-gallery-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .journal-gallery-thumb .journal-gallery-remove { position: absolute; top: 2px; right: 2px; background: rgba(0,0,0,0.65); color: #fff; width: 20px; height: 20px; border-radius: 9999px; font-size: 0.75rem; line-height: 20px; text-align: center; }
-    .journal-gallery-thumb .journal-gallery-move { position: absolute; bottom: 2px; background: rgba(0,0,0,0.55); color: #fff; width: 20px; height: 20px; border-radius: 9999px; font-size: 0.7rem; line-height: 20px; text-align: center; }
+    .journal-gallery-thumb .journal-gallery-remove { position: absolute; top: 2px; right: 2px; background: rgba(0,0,0,0.65); color: #fff; width: 20px; height: 20px; border-radius: 9999px; font-size: 0.65rem; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+    .journal-gallery-thumb .journal-gallery-move { position: absolute; bottom: 2px; background: rgba(0,0,0,0.55); color: #fff; width: 20px; height: 20px; border-radius: 9999px; font-size: 0.7rem; display: flex; align-items: center; justify-content: center; cursor: pointer; }
     .journal-gallery-thumb .journal-gallery-move-left { left: 2px; }
     .journal-gallery-thumb .journal-gallery-move-right { right: 2px; }
-    .journal-gallery-thumb .journal-gallery-cover-label { position: absolute; top: 2px; left: 2px; background: #2d6a4f; color: #fff; font-size: 0.6rem; font-weight: 700; padding: 1px 6px; border-radius: 9999px; }
+    .journal-gallery-thumb .journal-gallery-cover-label { position: absolute; top: 2px; left: 2px; background: #2d6a4f; color: #fff; font-size: 0.6rem; font-weight: 700; padding: 1px 6px; border-radius: 4px; }
     .toolbox-card { border-radius: 1rem; overflow: hidden; border: 1px solid #e5e7eb; }
     .toolbox-card-header { cursor: pointer; padding: 1.25rem; display: flex; align-items: center; justify-content: space-between; transition: background-color 0.2s ease; }
     .toolbox-card-header:hover { background: rgba(45, 106, 79, 0.04); }
@@ -65,8 +65,133 @@
     .toolbox-card.open .toolbox-card-body { max-height: 8000px; }
     .toolbox-card.open .toolbox-chevron { transform: rotate(180deg); }
     .toolbox-chevron { transition: transform 0.3s; }
-    .quick-find-btn { min-height: 56px; border-radius: 1rem; font-weight: 600; font-size: 0.875rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; border: 2px solid #d1fae5; background: #ffffff; color: #1b4332; transition: all 0.15s; }
+    .quick-find-btn { min-height: 56px; border-radius: 1rem; font-weight: 600; font-size: 0.875rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; border: 2px solid #d1f2eb; background: white; color: #2d6a4f; transition: all 0.2s ease; }
     .quick-find-btn:hover { background: #ecfdf5; border-color: #2d6a4f; }
     .checklist-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.625rem 0; border-bottom: 1px solid #f3f4f6; }
     .checklist-item:last-child { border-bottom: none; }
     .checklist-item input[type="checkbox"] { width: 1.25rem; height: 1.25rem; accent-color: #2d6a4f; flex-shrink: 0; }
+
+    /* ========== LEARN TAB STYLES ========== */
+
+    .learn-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    @media (min-width: 640px) {
+      .learn-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 1.25rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .learn-grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 1.5rem;
+      }
+    }
+
+    .learn-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 1.5rem 1rem;
+      border-radius: 1rem;
+      border: 2px solid;
+      background: white;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      min-height: 160px;
+      font-weight: 500;
+    }
+
+    .learn-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(27, 67, 50, 0.15);
+    }
+
+    .learn-card:active {
+      transform: translateY(-2px);
+    }
+
+    .learn-card-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .learn-card-title {
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 0.375rem;
+      letter-spacing: -0.01em;
+    }
+
+    .learn-card-description {
+      font-size: 0.65rem;
+      opacity: 0.75;
+      font-weight: 400;
+    }
+
+    /* Color variants for learn cards */
+    .learn-card-blue { border-color: #3b82f6; color: #1e40af; background: rgba(59, 130, 246, 0.05); }
+    .learn-card-blue:hover { background: rgba(59, 130, 246, 0.1); }
+
+    .learn-card-green { border-color: #10b981; color: #047857; background: rgba(16, 185, 129, 0.05); }
+    .learn-card-green:hover { background: rgba(16, 185, 129, 0.1); }
+
+    .learn-card-amber { border-color: #f59e0b; color: #b45309; background: rgba(245, 158, 11, 0.05); }
+    .learn-card-amber:hover { background: rgba(245, 158, 11, 0.1); }
+
+    .learn-card-rose { border-color: #f43f5e; color: #be123c; background: rgba(244, 63, 94, 0.05); }
+    .learn-card-rose:hover { background: rgba(244, 63, 94, 0.1); }
+
+    .learn-card-purple { border-color: #a855f7; color: #6d28d9; background: rgba(168, 85, 247, 0.05); }
+    .learn-card-purple:hover { background: rgba(168, 85, 247, 0.1); }
+
+    .learn-card-cyan { border-color: #06b6d4; color: #0e7490; background: rgba(6, 182, 212, 0.05); }
+    .learn-card-cyan:hover { background: rgba(6, 182, 212, 0.1); }
+
+    .learn-card-emerald { border-color: #10b981; color: #065f46; background: rgba(16, 185, 129, 0.05); }
+    .learn-card-emerald:hover { background: rgba(16, 185, 129, 0.1); }
+
+    .learn-card-lime { border-color: #84cc16; color: #3f6212; background: rgba(132, 204, 22, 0.05); }
+    .learn-card-lime:hover { background: rgba(132, 204, 22, 0.1); }
+
+    .learn-card-orange { border-color: #f97316; color: #92400e; background: rgba(249, 115, 22, 0.05); }
+    .learn-card-orange:hover { background: rgba(249, 115, 22, 0.1); }
+
+    .learn-card-slate { border-color: #64748b; color: #334155; background: rgba(100, 116, 139, 0.05); }
+    .learn-card-slate:hover { background: rgba(100, 116, 139, 0.1); }
+
+    .learn-card-red { border-color: #ef4444; color: #7f1d1d; background: rgba(239, 68, 68, 0.05); }
+    .learn-card-red:hover { background: rgba(239, 68, 68, 0.1); }
+
+    .learn-card-gray { border-color: #9ca3af; color: #374151; background: rgba(156, 163, 175, 0.05); }
+    .learn-card-gray:hover { background: rgba(156, 163, 175, 0.1); }
+
+    .learn-card-yellow { border-color: #eab308; color: #713f12; background: rgba(234, 179, 8, 0.05); }
+    .learn-card-yellow:hover { background: rgba(234, 179, 8, 0.1); }
+
+    .learn-card-fuchsia { border-color: #d946ef; color: #711c91; background: rgba(217, 70, 239, 0.05); }
+    .learn-card-fuchsia:hover { background: rgba(217, 70, 239, 0.1); }
+
+    .learn-card-pink { border-color: #ec4899; color: #831843; background: rgba(236, 72, 153, 0.05); }
+    .learn-card-pink:hover { background: rgba(236, 72, 153, 0.1); }
+
+    .learn-card-indigo { border-color: #6366f1; color: #312e81; background: rgba(99, 102, 241, 0.05); }
+    .learn-card-indigo:hover { background: rgba(99, 102, 241, 0.1); }
+
+    .learn-card-violet { border-color: #8b5cf6; color: #4c1d95; background: rgba(139, 92, 246, 0.05); }
+    .learn-card-violet:hover { background: rgba(139, 92, 246, 0.1); }
+
+    .learn-card-teal { border-color: #14b8a6; color: #134e4a; background: rgba(20, 184, 166, 0.05); }
+    .learn-card-teal:hover { background: rgba(20, 184, 166, 0.1); }
+
+    .learn-card-sky { border-color: #0ea5e9; color: #0c2d6b; background: rgba(14, 165, 233, 0.05); }
+    .learn-card-sky:hover { background: rgba(14, 165, 233, 0.1); }
