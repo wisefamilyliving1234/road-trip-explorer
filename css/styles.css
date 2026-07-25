@@ -1,0 +1,72 @@
+:root {
+      --forest-green: #1b4332;
+      --evergreen: #2d6a4f;
+      --sandstone: #e8ded0;
+      --mountain-gray: #6b7280;
+      --warm-white: #faf7f2;
+      --soft-gold: #c9a15c;
+      --lake-blue: #4a7c96;
+    }
+    body { font-family: 'DM Sans', sans-serif; position: relative; -webkit-tap-highlight-color: transparent; }
+    html { scroll-behavior: smooth; }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 900px 500px at 10% -5%, rgba(201, 161, 92, 0.10), transparent 60%),
+        radial-gradient(ellipse 800px 600px at 100% 15%, rgba(45, 106, 79, 0.07), transparent 55%);
+    }
+    .tab-btn.active { background: #2d6a4f; color: white; }
+    .tab-btn { transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease; }
+    .tab-btn:active { transform: scale(0.95); }
+    .section { display: none; }
+    .section.active { display: block; animation: premiumFadeIn 0.35s ease; }
+    @keyframes premiumFadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+    .rounded-2xl.border, .rounded-2xl.shadow-sm, .rounded-xl.border, .toolbox-card {
+      transition: box-shadow 0.25s ease, transform 0.2s ease, border-color 0.25s ease;
+    }
+    .rounded-2xl.border:hover, .rounded-2xl.shadow-sm:hover, .toolbox-card:hover {
+      box-shadow: 0 10px 28px -14px rgba(27, 67, 50, 0.28);
+    }
+    button, a.quick-find-btn, .canva-button {
+      transition: transform 0.15s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+    }
+    button:active, a.quick-find-btn:active { transform: scale(0.97); }
+    main h2 { letter-spacing: -0.015em; }
+    main h3, main h4 { letter-spacing: -0.005em; }
+    main p { line-height: 1.6; }
+    .stop-detail { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    .stop-detail.open { max-height: 4000px; }
+    .stop-card .chevron { transition: transform 0.3s; }
+    .stop-card.expanded .chevron { transform: rotate(180deg); }
+    .journal-photo-slot { border: 2px dashed #a7c4b5; border-radius: 1rem; padding: 1.5rem; text-align: center; cursor: pointer; transition: all 0.2s; position: relative; }
+    .journal-photo-slot:hover { background: #f0fdf4; border-color: #2d6a4f; }
+    .journal-photo-slot.has-photos { border-style: solid; border-color: #2d6a4f; padding: 0 0 0.5rem 0; overflow: hidden; }
+    .journal-photo-slot.has-photos:hover { background: transparent; }
+    .journal-photo-cover-img { width: 100%; height: 96px; object-fit: cover; display: block; }
+    .journal-photo-slot.has-photos .journal-photo-label { display: block; margin-top: 0.5rem; }
+    .journal-photo-badge { position: absolute; top: 6px; right: 6px; background: rgba(0,0,0,0.65); color: #fff; font-size: 0.65rem; font-weight: 600; padding: 2px 7px; border-radius: 9999px; }
+    .journal-gallery-thumb { position: relative; border-radius: 0.5rem; overflow: hidden; aspect-ratio: 1 / 1; background: #f3f4f6; cursor: pointer; }
+    .journal-gallery-thumb.is-cover { outline: 3px solid #2d6a4f; }
+    .journal-gallery-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .journal-gallery-thumb .journal-gallery-remove { position: absolute; top: 2px; right: 2px; background: rgba(0,0,0,0.65); color: #fff; width: 20px; height: 20px; border-radius: 9999px; font-size: 0.75rem; line-height: 20px; text-align: center; }
+    .journal-gallery-thumb .journal-gallery-move { position: absolute; bottom: 2px; background: rgba(0,0,0,0.55); color: #fff; width: 20px; height: 20px; border-radius: 9999px; font-size: 0.7rem; line-height: 20px; text-align: center; }
+    .journal-gallery-thumb .journal-gallery-move-left { left: 2px; }
+    .journal-gallery-thumb .journal-gallery-move-right { right: 2px; }
+    .journal-gallery-thumb .journal-gallery-cover-label { position: absolute; top: 2px; left: 2px; background: #2d6a4f; color: #fff; font-size: 0.6rem; font-weight: 700; padding: 1px 6px; border-radius: 9999px; }
+    .toolbox-card { border-radius: 1rem; overflow: hidden; border: 1px solid #e5e7eb; }
+    .toolbox-card-header { cursor: pointer; padding: 1.25rem; display: flex; align-items: center; justify-content: space-between; transition: background-color 0.2s ease; }
+    .toolbox-card-header:hover { background: rgba(45, 106, 79, 0.04); }
+    .transport-chip:has(:focus-visible) { outline: 2px solid #2d6a4f; outline-offset: 2px; }
+    .toolbox-card-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    .toolbox-card.open .toolbox-card-body { max-height: 8000px; }
+    .toolbox-card.open .toolbox-chevron { transform: rotate(180deg); }
+    .toolbox-chevron { transition: transform 0.3s; }
+    .quick-find-btn { min-height: 56px; border-radius: 1rem; font-weight: 600; font-size: 0.875rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; border: 2px solid #d1fae5; background: #ffffff; color: #1b4332; transition: all 0.15s; }
+    .quick-find-btn:hover { background: #ecfdf5; border-color: #2d6a4f; }
+    .checklist-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.625rem 0; border-bottom: 1px solid #f3f4f6; }
+    .checklist-item:last-child { border-bottom: none; }
+    .checklist-item input[type="checkbox"] { width: 1.25rem; height: 1.25rem; accent-color: #2d6a4f; flex-shrink: 0; }

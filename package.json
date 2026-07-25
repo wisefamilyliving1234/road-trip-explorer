@@ -1,0 +1,22 @@
+{
+  "name": "road-trip-explorer",
+  "version": "1.0.0",
+  "description": "Wise Family Living Road Trip Explorer — a premium, mobile-first family road trip companion PWA.",
+  "private": true,
+  "scripts": {
+    "dev": "npx serve . -l 5173",
+    "build:css": "npx tailwindcss -i ./css/input.css -o ./css/styles.compiled.css --minify",
+    "deploy": "npx wrangler pages deploy . --project-name=road-trip-explorer"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17",
+    "wrangler": "^3.78.0"
+  },
+  "keywords": [
+    "pwa",
+    "travel",
+    "road-trip",
+    "family"
+  ],
+  "license": "UNLICENSED"
+}
